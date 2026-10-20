@@ -55,8 +55,9 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 <script>
 (function(){
   function find(e){var c=e.target&&e.target.closest&&e.target.closest('.card');return c&&c.querySelector('video.hover-play');}
-  document.addEventListener('mouseover',function(e){var v=find(e);if(v&&v.paused){var p=v.play();if(p&&p.catch)p.catch(function(){});}});
-  document.addEventListener('mouseout',function(e){var v=find(e);if(!v)return;var c=e.target.closest('.card');if(c&&!c.contains(e.relatedTarget)){v.pause();v.currentTime=0;}});
+  function rest(v){return parseFloat(v.getAttribute('data-rest')||'0');}
+  document.addEventListener('mouseover',function(e){var v=find(e);if(v&&v.paused){try{v.currentTime=0;}catch(x){}var p=v.play();if(p&&p.catch)p.catch(function(){});}});
+  document.addEventListener('mouseout',function(e){var v=find(e);if(!v)return;var c=e.target.closest('.card');if(c&&!c.contains(e.relatedTarget)){v.pause();try{v.currentTime=rest(v);}catch(x){}}});
 })();
 </script>
 <style>.card-static{cursor:default}.card-static:hover .card-title{text-decoration:none!important}.card-static:hover .card-img{transform:none!important;filter:none!important}</style>
@@ -103,7 +104,7 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 <span style="font-size: 15px; letter-spacing: -0.01em; color: #67655f">Role: Sole designer, concept to live event · 2025</span>
 </div>
 <div style="position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #1c1d2b">
-<video class="card-img hover-play" src="assets/d4e9ee5b349b2eea2b1f5ad35a5cc9a4.mp4" poster="assets/868f838a37c571f33ea0e57ef53c3486.jpg" muted="muted" loop="loop" playsinline="playsinline" preload="metadata" aria-label="Hall of Game Homecoming 2025 logo on charcoal" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></video>
+<video class="card-img hover-play" data-rest="1" src="assets/d4e9ee5b349b2eea2b1f5ad35a5cc9a4.mp4" poster="assets/868f838a37c571f33ea0e57ef53c3486.jpg" muted="muted" loop="loop" playsinline="playsinline" preload="metadata" aria-label="Hall of Game Homecoming 2025 logo on charcoal" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></video>
 </div>
 </a>
 
