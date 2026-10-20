@@ -119,7 +119,7 @@ for src, (dst, title, desc) in PAGES.items():
 <meta property="og:description" content="{html.escape(desc, quote=True)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://{DOMAIN}/{'' if dst == 'index.html' else dst}">
-<meta property="og:image" content="https://{DOMAIN}/assets/2d72b8889d5e30d88a749267cec8dfd6.jpg">
+<meta property="og:image" content="https://{DOMAIN}/assets/868f838a37c571f33ea0e57ef53c3486.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a2a2a'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial,sans-serif' font-size='16' fill='%23efeee9' text-anchor='middle'%3EAR%3C/text%3E%3C/svg%3E">
 {helmet.strip()}
 <style>.card-static{{cursor:default}}.card-static:hover .card-title{{text-decoration:none!important}}.card-static:hover .card-img{{transform:none!important;filter:none!important}}</style>
