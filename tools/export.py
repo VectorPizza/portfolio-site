@@ -30,6 +30,10 @@ PAGES = {
                       'Logos for events, programs and places.'),
     'VectorPizza.dc.html': ('vector-pizza.html', 'Vector Pizza — Austin Remer',
                             'Stickers, pins, patches and packaging for my own Etsy shop.'),
+    'Paragon.dc.html': ('hall-of-game-paragon.html', 'Hall of Game: Paragon — Austin Remer',
+                        'The 2023 Hall of Game, built around supernatural key art.'),
+    'Murals.dc.html': ('murals.html', 'Murals — Austin Remer',
+                       'Two paint-by-number murals for Full Sail University’s Hall of Fame Week.'),
     'Purdue.dc.html': ('purdue-space-patch.html', 'Purdue Space Patch — Austin Remer',
                        'Mission patches for Purdue University’s Mars Perseverance merchandise.'),
 }

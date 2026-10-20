@@ -52,6 +52,13 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 }
 }
 </style>
+<script>
+(function(){
+  function find(e){var c=e.target&&e.target.closest&&e.target.closest('.card');return c&&c.querySelector('video.hover-play');}
+  document.addEventListener('mouseover',function(e){var v=find(e);if(v&&v.paused){var p=v.play();if(p&&p.catch)p.catch(function(){});}});
+  document.addEventListener('mouseout',function(e){var v=find(e);if(!v)return;var c=e.target.closest('.card');if(c&&!c.contains(e.relatedTarget)){v.pause();v.currentTime=0;}});
+})();
+</script>
 <style>.card-static{cursor:default}.card-static:hover .card-title{text-decoration:none!important}.card-static:hover .card-img{transform:none!important;filter:none!important}</style>
 </head>
 <body>
@@ -154,18 +161,17 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 </div>
 </div>
 
-<div class="card card-static" style="display: flex; flex-direction: column; gap: 18px; color: #2a2a2a; text-decoration: none">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px 32px">
-<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
-<h3 class="card-title" style="margin: 0; display: flex; gap: 18px; font-size: clamp(26px, 2.6vw, 36px); font-weight: 400; line-height: 1.1; letter-spacing: -0.03em"><span style="color: #67655f">06</span>Hall of Game: Paragon</h3>
-<span style="font-size: 15px; line-height: 1.3; letter-spacing: -0.01em; color: #67655f">Full Sail University · Event identity and animation</span>
-</div>
-<span style="font-size: 15px; letter-spacing: -0.01em; color: #67655f">Role: Design lead · 2023</span>
-</div>
-<div style="position: relative; aspect-ratio: 21 / 9; overflow: hidden; background: #1a1030"><img class="card-img" src="assets/869e68e5f9fa1ec06e86193236fc9cd2.jpg" alt="Hall of Game Paragon key art: a beam of light rising from a mountain peak through purple aurora and clouds" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block"></div>
-</div>
-
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr)); gap: 48px 20px">
+<a href="hall-of-game-paragon.html" class="card" style="min-width: 0; display: flex; flex-direction: column; gap: 14px; color: #2a2a2a; text-decoration: none">
+<div style="position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #1a1030"><video class="card-img hover-play" src="assets/ed9ca1dd9d8d9b79a8e838b165ef2f83.mp4" poster="assets/869e68e5f9fa1ec06e86193236fc9cd2.jpg" muted="muted" loop="loop" playsinline="playsinline" preload="metadata" aria-label="Hall of Game Paragon key art: a lone peak under a beam of light and northern lights" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></video></div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h3 class="card-title" style="margin: 0; display: flex; gap: 12px; font-size: 17px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em"><span style="color: #67655f">06</span>Hall of Game: Paragon</h3>
+<span style="font-size: 15px; color: #67655f">2023</span>
+</div>
+<span style="font-size: 15px; line-height: 1.3; letter-spacing: -0.01em; color: #67655f">Full Sail University · Key art and event identity</span>
+</div>
+</a>
 <a href="game-infographics.html" class="card" style="min-width: 0; display: flex; flex-direction: column; gap: 14px; color: #2a2a2a; text-decoration: none">
 <div style="position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #1c2026"><img class="card-img" src="assets/957858fdbf660c57cd1e64241700a716.jpg" alt="League of Legends infographic, widescreen: game facts, title panel and grads panel in three columns" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block"></div>
 <div style="display: flex; flex-direction: column; gap: 4px">
@@ -187,7 +193,7 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 </div>
 </a>
 <a href="vector-pizza.html" class="card" style="min-width: 0; display: flex; flex-direction: column; gap: 14px; color: #2a2a2a; text-decoration: none">
-<div style="position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #e4e2dc; display: flex; align-items: center; justify-content: center"><img class="card-img" src="assets/26da3eabb452e39961765f3c98b88bac.png" alt="Vector Pizza logo: a pizza slice in a scalloped orange seal" style="display: block; width: 78%; height: auto; aspect-ratio: 600 / 250"></div>
+<div style="position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #e4e2dc; display: flex; align-items: center; justify-content: center"><img class="card-img" src="assets/26da3eabb452e39961765f3c98b88bac.png" alt="Vector Pizza logo: a pizza slice in a scalloped orange seal" style="display: block; flex: none; width: 156%; max-width: none; height: auto; aspect-ratio: 600 / 250"></div>
 <div style="display: flex; flex-direction: column; gap: 4px">
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
 <h3 class="card-title" style="margin: 0; display: flex; gap: 12px; font-size: 17px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em"><span style="color: #67655f">09</span>Vector Pizza</h3>
@@ -206,7 +212,7 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 <span style="font-size: 15px; line-height: 1.3; letter-spacing: -0.01em; color: #67655f">Purdue University, via Learfield · Patch design</span>
 </div>
 </a>
-<div class="card card-static" style="min-width: 0; display: flex; flex-direction: column; gap: 14px; color: #2a2a2a; text-decoration: none">
+<a href="murals.html" class="card" style="min-width: 0; display: flex; flex-direction: column; gap: 14px; color: #2a2a2a; text-decoration: none">
 <div style="position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #1f3a66"><img class="card-img" src="assets/8a0cfe29b26bb8b93c71112a4249686a.jpg" alt="The It’s Been Unreal mural installed outdoors: ornate navy and white lettering with celestial icons" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div>
 <div style="display: flex; flex-direction: column; gap: 4px">
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
@@ -215,7 +221,7 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 </div>
 <span style="font-size: 15px; line-height: 1.3; letter-spacing: -0.01em; color: #67655f">Full Sail University · Illustrator and art director</span>
 </div>
-</div>
+</a>
 </div>
 
 </div>
