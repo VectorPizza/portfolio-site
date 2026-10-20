@@ -32,6 +32,8 @@ PAGES = {
                             'Stickers, pins, patches and packaging for my own Etsy shop.'),
     'Paragon.dc.html': ('hall-of-game-paragon.html', 'Hall of Game: Paragon — Austin Remer',
                         'The 2023 Hall of Game, built around supernatural key art.'),
+    'Stellar.dc.html': ('stellar.html', 'Stellar — Austin Remer',
+                        'An unproduced branding direction for Full Sail University’s 11th Hall of Fame.'),
     'Murals.dc.html': ('murals.html', 'Murals — Austin Remer',
                        'Two paint-by-number murals for Full Sail University’s Hall of Fame Week.'),
     'Purdue.dc.html': ('purdue-space-patch.html', 'Purdue Space Patch — Austin Remer',
