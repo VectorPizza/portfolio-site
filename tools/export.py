@@ -15,7 +15,7 @@ SRC, OUT = sys.argv[1], sys.argv[2]
 
 PAGES = {
     'Main.dc.html': ('index.html', 'Austin Remer — Designer',
-                     'Austin Remer designs brands for events and spaces, and sees them through to the screens, print and walls.'),
+                     'Austin Remer designs brands, from the logo to everything it ends up on: screens, print, merch and spaces.'),
     'HallOfGame.dc.html': ('hall-of-game-homecoming.html', 'Hall of Game: Homecoming 2025 — Austin Remer',
                            'Brand, event assets and broadcast graphics for Full Sail University’s esports homecoming.'),
     'ArmadaHQ.dc.html': ('armada-hq.html', 'Armada HQ — Austin Remer',
