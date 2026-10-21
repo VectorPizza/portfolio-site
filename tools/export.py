@@ -137,6 +137,16 @@ for src, (dst, title, desc) in PAGES.items():
     for s2, (d2, _, _) in PAGES.items():
         page = page.replace(f'href="{s2}', f'href="{d2}')
     page = page.replace('href="index.html"', 'href="./"').replace('href="index.html#', 'href="./#')
+    # analytics (live site only)
+    page = page.replace('</head>', '<script data-goatcounter="https://arportfolio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>\n</head>', 1)
+    if dst == 'index.html':
+        hidden = ('<span id="visits" aria-hidden="true" style="padding: 13px 0; color: #efeee9; user-select: text">Visits: …</span>'
+                  '<script>fetch("https://arportfolio.goatcounter.com/counter/TOTAL.json").then(function(r){return r.json()})'
+                  '.then(function(d){document.getElementById("visits").textContent="Visits: "+d.count}).catch(function(){})</script>')
+        k = page.rfind('<span style="padding: 13px 0">© 2026 Austin Remer</span>')
+        assert k > 0
+        e = k + len('<span style="padding: 13px 0">© 2026 Austin Remer</span>')
+        page = page[:e] + hidden + page[e:]
     # assets
     def asset(m):
         i = m.group(1); used.add(i)
