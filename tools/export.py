@@ -32,6 +32,8 @@ PAGES = {
                             'Stickers, pins, patches and packaging for my own Etsy shop.'),
     'Paragon.dc.html': ('hall-of-game-paragon.html', 'Hall of Game: Paragon — Austin Remer',
                         'The 2023 Hall of Game, built around supernatural key art.'),
+    'ArmadaBrand.dc.html': ('full-sail-armada.html', 'Full Sail Armada — Austin Remer',
+                            'The Full Sail Armada esports brand, created in 2018 and redesigned each season.'),
     'Stellar.dc.html': ('stellar.html', 'Stellar — Austin Remer',
                         'An unproduced branding direction for Full Sail University’s 11th Hall of Fame.'),
     'Murals.dc.html': ('murals.html', 'Murals — Austin Remer',
