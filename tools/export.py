@@ -40,6 +40,8 @@ PAGES = {
                        'Two paint-by-number murals for Full Sail University’s Hall of Fame Week.'),
     'Purdue.dc.html': ('purdue-space-patch.html', 'Purdue Space Patch — Austin Remer',
                        'Mission patches for Purdue University’s Mars Perseverance merchandise.'),
+    'Keyboard.dc.html': ('mysterium-keyboard.html', 'Mysterium Keyboard — Austin Remer',
+                         'A keyboard I built from PCB design files and a parts list: KiCad, ordering boards, sourcing parts and a lot of soldering.'),
 }
 EXTRA_FILES = {'Austin_Remer_Resume.pdf': os.path.join(SCRATCH, 'portfolio', 'Austin_Remer_Resume.pdf')}
 DOMAIN = 'austinremer.com'
