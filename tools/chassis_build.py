@@ -63,7 +63,7 @@ s = s.replace('href="https://austinremer.com/hall-of-game-paragon.html" target="
 # hidden visit counter, same color as the footer background
 rep('<span class="mono dim">© 2026 Austin Remer</span>',
     '<span class="mono dim">© 2026 Austin Remer<span id="visits" aria-hidden="true" style="margin-left:14px;color:#1a1917;user-select:text">Visits: …</span></span>'
-    '<script>fetch("https://arportfolio.goatcounter.com/counter/TOTAL.json").then(function(r){return r.json()})'
+    '<script>fetch("https://arportfolio.goatcounter.com/counter/TOTAL.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()})'
     '.then(function(d){document.getElementById("visits").textContent="Visits: "+d.count}).catch(function(){})</script>')
 
 # --- split head/body and wrap

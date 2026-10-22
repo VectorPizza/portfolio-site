@@ -434,7 +434,7 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
       </div>
       <footer class="foot">
         <div class="cal" aria-hidden="true" style="padding:0"><span class="steps"><i style="--n:2"></i><i style="--n:4"></i><i style="--n:6"></i><i style="--n:8"></i><i class="o" style="--n:10"></i></span></div>
-        <span class="mono dim">© 2026 Austin Remer<span id="visits" aria-hidden="true" style="margin-left:14px;color:#1a1917;user-select:text">Visits: …</span></span><script>fetch("https://arportfolio.goatcounter.com/counter/TOTAL.json").then(function(r){return r.json()}).then(function(d){document.getElementById("visits").textContent="Visits: "+d.count}).catch(function(){})</script>
+        <span class="mono dim">© 2026 Austin Remer<span id="visits" aria-hidden="true" style="margin-left:14px;color:#1a1917;user-select:text">Visits: …</span></span><script>fetch("https://arportfolio.goatcounter.com/counter/TOTAL.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){document.getElementById("visits").textContent="Visits: "+d.count}).catch(function(){})</script>
         <nav aria-label="Elsewhere"><a href="https://dribbble.com/aremer" target="_blank" rel="noopener">Dribbble ↗</a><a href="https://www.linkedin.com/in/austinremer/" target="_blank" rel="noopener">LinkedIn ↗</a></nav>
         <a href="#top">Back to top ↑</a>
       </footer>
@@ -449,7 +449,7 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
   var bg = document.querySelector('.stage-bg');
   if(bg){ if(reduce){ bg.removeAttribute('autoplay'); bg.pause(); } else { var bp=bg.play(); if(bp&&bp.catch) bp.catch(function(){}); } }
   // ASCII lens: a circle that follows the cursor over the header video and redraws it as characters
-  var LENS = window.__lens = {shape:'circle', size:140, detail:8, bright:135, contrast:1.75, black:0, feather:90, follow:0.25};
+  var LENS = window.__lens = {shape:'circle', size:160, detail:8, bright:55, contrast:2, black:0, feather:60, follow:0.25};
   (function(){
     var stage=document.querySelector('.stage'), vid=document.querySelector('.stage-bg'), cv=document.querySelector('.stage-ascii');
     if(!stage||!vid||!cv||reduce) return;
