@@ -91,7 +91,7 @@ img,video{display:block;max-width:100%}
 .stage-tag{align-self:flex-end;display:inline-flex;gap:10px;padding:12px 0 clamp(18px,2vw,28px);text-decoration:none;color:var(--paper)}
 .stage-tag .dim{color:color-mix(in oklab,var(--paper) 55%,transparent)}
 .stage-tag:hover{color:var(--signal)}
-.stage-ascii{position:absolute;left:0;top:0;pointer-events:none;border-radius:50%;opacity:0;transition:opacity .25s ease;will-change:transform;box-shadow:0 0 0 1px color-mix(in oklab,var(--alu) 35%,transparent)}
+.stage-ascii{position:absolute;left:0;top:0;pointer-events:none;border-radius:50%;opacity:0;transition:opacity .25s ease;will-change:transform}
 .stage.ascii-on .stage-ascii{opacity:1}
 
 /* section heads */
@@ -471,13 +471,13 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
           var n=N*N, L=new Float32Array(n), lo=1, hi=0, ar=0, ag=0, ab=0;
           for(var q=0;q<n;q++){ var o=q*4, v=(0.2126*d[o]+0.7152*d[o+1]+0.0722*d[o+2])/255; L[q]=v; if(v<lo)lo=v; if(v>hi)hi=v; ar+=d[o]; ag+=d[o+1]; ab+=d[o+2]; }
           ar/=n; ag/=n; ab/=n; var span=Math.max(hi-lo,0.12);
-          ctx.fillStyle='rgb('+(ar*0.28|0)+','+(ag*0.28|0)+','+(ab*0.28|0)+')'; ctx.fillRect(0,0,2*R,2*R);
+          ctx.fillStyle='#000'; ctx.fillRect(0,0,2*R,2*R);
           ctx.font=(CELL*1.2)+'px "Geist Mono", ui-monospace, monospace'; ctx.textAlign='center'; ctx.textBaseline='middle';
           for(var j=0;j<N;j++) for(var i=0;i<N;i++){
             var q2=j*N+i, o2=q2*4, t=Math.pow((L[q2]-lo)/span,0.75);
             var c=RAMP[Math.min(RAMP.length-1,1+Math.floor(t*(RAMP.length-1)))];
-            var r=d[o2],g=d[o2+1],b=d[o2+2], m=Math.max(r,g,b,1), lift=Math.max(1,(150+105*t)/m);
-            ctx.fillStyle='rgb('+Math.min(255,r*lift|0)+','+Math.min(255,g*lift|0)+','+Math.min(255,b*lift|0)+')';
+            var gr=Math.round(110+145*t);
+            ctx.fillStyle='rgb('+gr+','+gr+','+gr+')';
             ctx.fillText(c,i*CELL+CELL/2,j*CELL+CELL/2);
           }
         }catch(e){ tainted=true; stage.classList.remove('ascii-on'); return; }
