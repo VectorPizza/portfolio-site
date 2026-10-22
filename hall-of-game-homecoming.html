@@ -15,8 +15,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;800&amp;family=Yellowtail&amp;family=Albert+Sans:wght@400;500&amp;family=Schibsted+Grotesk:wght@400;500&amp;display=swap">
 <style>
-body{margin:0;background:#efeee9}
-a{color:#2a2a2a}a:hover{color:#000000}
+body{margin:0;background:#1a1917}
+a{color:#d4d2cc}a:hover{color:#eeede9}
 a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 .ul-link{text-decoration:none}
 .ul-link:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
@@ -35,36 +35,53 @@ main>section:nth-child(2)[aria-label]{animation-delay:.4s}
 main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:not(.card img):not(figure img)){animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 180px}
 }
 }
+
+/* chassis theme */
+html{background:#1a1917;color-scheme:dark}
+::selection{background:#f06a26;color:#1a1917}
+#top h1,#top h2,#top h3,#top .next-title{color:#eeede9}
+#top h2>span:first-child{font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;letter-spacing:.06em;color:#f06a26!important}
+#top dt{font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px!important;letter-spacing:.06em;text-transform:uppercase}
+#top footer{font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px!important;letter-spacing:.06em;text-transform:uppercase}
+#top footer a:hover{color:#eeede9!important}
+.chtop{position:sticky;top:0;z-index:20;background:color-mix(in oklab,#1a1917 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #3a3832}
+.chtop-in{max-width:1440px;margin:0 auto;padding:0 clamp(16px,2.4vw,36px);box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 28px;min-height:56px;font-size:17px;line-height:1.4;letter-spacing:-.01em;color:#d4d2cc}
+.chtop a{text-decoration:none;color:#d4d2cc}
+.chtop a:hover{color:#eeede9}
+.chtop nav{display:flex;flex-wrap:wrap;gap:0 22px}
+.chtop nav a,.chtop .name{padding:12px 0}
+.chtop .role{color:#8f8c84}
+.chtop .status{display:flex;align-items:center;gap:9px;font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.chtop .led{width:8px;height:8px;border-radius:50%;background:#f06a26;box-shadow:0 0 0 3px color-mix(in oklab,#f06a26 22%,transparent)}
+@media (max-width:640px){.chtop .role{display:none}}
 </style>
 <style>.card-static{cursor:default}.card-static:hover .card-title{text-decoration:none!important}.card-static:hover .card-img{transform:none!important;filter:none!important}</style>
 <script data-goatcounter="https://arportfolio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
-<div id="top" style="background: #efeee9; color: #2a2a2a; font-family: &#x27;Geist&#x27;, &#x27;Helvetica Neue&#x27;, Helvetica, sans-serif; font-weight: 400; font-feature-settings: 'tnum' 1; min-height: 100vh">
+<div id="top" style="background: #1a1917; color: #d4d2cc; font-family: &#x27;Geist&#x27;, &#x27;Helvetica Neue&#x27;, Helvetica, sans-serif; font-weight: 400; font-feature-settings: 'tnum' 1; min-height: 100vh">
 
-<header style="max-width: 1200px; margin: 0 auto; padding: 14px clamp(20px, 5vw, 72px); box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0 32px; font-size: 17px; line-height: 1.3; letter-spacing: -0.01em">
-<a href="./" class="ul-link" style="color: #2a2a2a; padding: 11px 0">Austin Remer</a>
-<span>Designer, Orlando FL</span>
-<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 0 24px">
-<a href="./" class="ul-link" style="color: #2a2a2a; padding: 11px 0">Work</a>
-<a href="./" class="ul-link" style="color: #2a2a2a; padding: 11px 0">Archive</a>
-<a href="./" class="ul-link" style="color: #2a2a2a; padding: 11px 0">About</a>
-<a href="./" class="ul-link" style="color: #2a2a2a; padding: 11px 0">Contact</a>
-</nav>
+<header class="chtop">
+<div class="chtop-in">
+<a class="name" href="./">Austin Remer</a>
+<span class="role">Designer, Orlando FL</span>
+<nav aria-label="Main"><a href="./#work">Work</a><a href="./#archive">Archive</a><a href="./#about">About</a><a href="./#contact">Contact</a></nav>
+<span class="status"><span class="led" aria-hidden="true"></span>Open to art director roles</span>
+</div>
 </header>
 
 <main>
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(48px, 5vw, 80px) clamp(20px, 5vw, 72px) clamp(48px, 5vw, 72px); box-sizing: border-box">
-<a href="./" class="ul-link" style="display: inline-block; color: #67655f; font-size: 17px; letter-spacing: -0.01em; padding: 11px 0">← All work</a>
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; margin-top: clamp(32px, 4vw, 56px); font-size: 21px; letter-spacing: -0.015em; color: #67655f"><span>Case study 01</span><span>Full Sail University</span><span>Part of a series I’ve led since 2019</span></div>
+<a href="./" class="ul-link" style="display: inline-block; color: #8f8c84; font-size: 17px; letter-spacing: -0.01em; padding: 11px 0">← All work</a>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; margin-top: clamp(32px, 4vw, 56px); font-size: 21px; letter-spacing: -0.015em; color: #8f8c84"><span>Case study 01</span><span>Full Sail University</span><span>Part of a series I’ve led since 2019</span></div>
 <h1 style="margin: 16px 0 0; max-width: 1200px; font-size: clamp(46px, 7vw, 108px); font-weight: 400; line-height: 0.93; letter-spacing: -0.055em">Hall of Game: Homecoming 2025</h1>
-<p style="margin: clamp(28px, 3vw, 40px) 0 0; max-width: 980px; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -0.03em; color: #85827a">The brand, event assets and broadcast graphics for Full Sail University’s annual esports homecoming, where varsity takes on alumni for a place on the Hall of Game trophy.</p>
-<dl style="margin: clamp(48px, 5vw, 72px) 0 0; display: flex; flex-wrap: wrap; gap: 0 29px; border-top: 1px solid #2a2a2a">
-<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #67655f">My role</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Sole designer and creative lead, concept to live event</dd></div>
-<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #67655f">Scope</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Look and feel, logo, animation, digital art</dd></div>
-<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #67655f">Also delivered</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Print, swag, venue install, stream broadcast graphics</dd></div>
-<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #67655f">When</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Sunday, March 9, 2025<br>Orlando Health Fortress, Full Sail University, and live on Twitch</dd></div>
+<p style="margin: clamp(28px, 3vw, 40px) 0 0; max-width: 980px; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -0.03em; color: #8f8c84">The brand, event assets and broadcast graphics for Full Sail University’s annual esports homecoming, where varsity takes on alumni for a place on the Hall of Game trophy.</p>
+<dl style="margin: clamp(48px, 5vw, 72px) 0 0; display: flex; flex-wrap: wrap; gap: 0 29px; border-top: 1px solid #d4d2cc">
+<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">My role</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Sole designer and creative lead, concept to live event</dd></div>
+<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">Scope</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Look and feel, logo, animation, digital art</dd></div>
+<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">Also delivered</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Print, swag, venue install, stream broadcast graphics</dd></div>
+<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">When</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Sunday, March 9, 2025<br>Orlando Health Fortress, Full Sail University, and live on Twitch</dd></div>
 </dl>
 </section>
 
@@ -73,40 +90,40 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 </section>
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
-<div style="display: flex; flex-wrap: wrap; gap: 32px 29px; border-top: 1px solid #2a2a2a; padding-top: 16px">
-<h2 style="flex: 1 1 280px; margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #67655f">01</span>The brief</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 32px 29px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="flex: 1 1 280px; margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #8f8c84">01</span>The brief</h2>
 <div style="flex: 3 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px; max-width: 860px">
 <p style="margin: 0; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -0.03em">A one-day esports homecoming: Armada varsity teams against returning alumni across Apex Legends, League of Legends and Halo Infinite, with the winners going on the Hall of Game trophy. It opened Hall of Fame week, and it had to land with two audiences at once: the people in the room and everyone watching the stream.</p>
-<p style="margin: 0; font-size: 19px; line-height: 1.4; letter-spacing: -0.01em; color: #4f4d48">The hard part was scale: one direction carried through every asset, concept to completion, with the energy an esports crowd expects, in the room and on screen.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.4; letter-spacing: -0.01em; color: #b3b0a8">The hard part was scale: one direction carried through every asset, concept to completion, with the energy an esports crowd expects, in the room and on screen.</p>
 <blockquote style="margin: 12px 0 0; padding: 0 0 0 20px; border-left: 2px solid #ed5f22; display: flex; flex-direction: column; gap: 8px">
 <p style="margin: 0; font-size: 21px; line-height: 1.35; letter-spacing: -0.015em">“Hall of Game is a highly anticipated event for students and alumni alike.”</p>
-<cite style="font-style: normal; font-size: 15px; color: #67655f">Sari Kitelyn, Director of Esports, Full Sail University</cite>
+<cite style="font-style: normal; font-size: 15px; color: #8f8c84">Sari Kitelyn, Director of Esports, Full Sail University</cite>
 </blockquote>
 </div>
 </div>
 </section>
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
-<div style="display: flex; flex-wrap: wrap; gap: 32px 29px; border-top: 1px solid #2a2a2a; padding-top: 16px">
-<h2 style="flex: 1 1 280px; margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #67655f">02</span>The idea</h2>
-<p style="flex: 3 1 560px; min-width: 0; margin: 0; font-size: clamp(34px, 4.4vw, 64px); line-height: 1; letter-spacing: -0.045em">Homecoming tradition and an esports rivalry, with a more modern, energetic look than the year before. <span style="color: #85827a">Everything was built to feel like a college game day.</span></p>
+<div style="display: flex; flex-wrap: wrap; gap: 32px 29px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="flex: 1 1 280px; margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #8f8c84">02</span>The idea</h2>
+<p style="flex: 3 1 560px; min-width: 0; margin: 0; font-size: clamp(34px, 4.4vw, 64px); line-height: 1; letter-spacing: -0.045em">Homecoming tradition and an esports rivalry, with a more modern, energetic look than the year before. <span style="color: #8f8c84">Everything was built to feel like a college game day.</span></p>
 </div>
 </section>
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #2a2a2a; padding-top: 16px">
-<h2 style="margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #67655f">03</span>The system</h2>
-<span style="font-size: 17px; color: #67655f">Mark, type, color and graphic language</span>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #8f8c84">03</span>The system</h2>
+<span style="font-size: 17px; color: #8f8c84">Mark, type, color and graphic language</span>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 29px; margin-top: 40px">
 <div style="flex: 2 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
 <img src="assets/9204f2494eeebc9c266449db0fd21442.jpg" alt="The Hall of Game shield mark: an orange football-style shield with a geometric A cut out of it, on textured charcoal" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #1e1e1f">
-<span style="font-size: 15px; line-height: 1.4; color: #67655f; max-width: 620px"><span style="color: #2a2a2a">Primary mark.</span> Drawn from college football so the event reads as game day at a glance. The shield carries over from the year before, redrawn sharper, and splits into team marks, A for Alumni and V for Varsity, for scoreboards, overlays and champion screens.</span>
+<span style="font-size: 15px; line-height: 1.4; color: #8f8c84; max-width: 620px"><span style="color: #d4d2cc">Primary mark.</span> Drawn from college football so the event reads as game day at a glance. The shield carries over from the year before, redrawn sharper, and splits into team marks, A for Alumni and V for Varsity, for scoreboards, overlays and champion screens.</span>
 </div>
 <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 29px">
 <div style="display: flex; flex-direction: column; gap: 10px">
-<div style="aspect-ratio: 4 / 3; display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: 24px; box-sizing: border-box; background: #fafaf8"><span style="font-size: 13px; color: #67655f">Helvetica Neue Black Condensed</span><span style="font-family: 'HelveticaNeue-CondensedBlack', 'Helvetica Neue Condensed Black', 'Helvetica Neue', 'Geist', sans-serif; font-weight: 900; font-stretch: condensed; font-size: clamp(34px, 3.6vw, 56px); line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase">Homecoming</span><span style="font-size: 13px; color: #67655f; margin-top: 6px">Yellowtail</span><span style="font-family: 'Yellowtail', cursive; font-size: clamp(28px, 2.8vw, 42px); line-height: 1; color: #ed5f22">Welcome Home</span></div>
-<span style="font-size: 15px; line-height: 1.4; color: #67655f"><span style="color: #2a2a2a">Typography.</span> A heavy condensed face for esports energy, and a script for the personal, traditional note: the tagline “Welcome Home” and the word “Team” on scoreboards.</span>
+<div style="aspect-ratio: 4 / 3; display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: 24px; box-sizing: border-box; background: #fafaf8"><span style="font-size: 13px; color: #8f8c84">Helvetica Neue Black Condensed</span><span style="font-family: 'HelveticaNeue-CondensedBlack', 'Helvetica Neue Condensed Black', 'Helvetica Neue', 'Geist', sans-serif; font-weight: 900; font-stretch: condensed; font-size: clamp(34px, 3.6vw, 56px); line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase">Homecoming</span><span style="font-size: 13px; color: #8f8c84; margin-top: 6px">Yellowtail</span><span style="font-family: 'Yellowtail', cursive; font-size: clamp(28px, 2.8vw, 42px); line-height: 1; color: #ed5f22">Welcome Home</span></div>
+<span style="font-size: 15px; line-height: 1.4; color: #8f8c84"><span style="color: #d4d2cc">Typography.</span> A heavy condensed face for esports energy, and a script for the personal, traditional note: the tagline “Welcome Home” and the word “Team” on scoreboards.</span>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px">
 <div style="display: flex; height: 120px">
@@ -114,17 +131,17 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 <div style="flex: 1.4; background: #222222; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; box-sizing: border-box; font-size: 12px; line-height: 1.3; color: #c9c6be"><span>Dark Gray</span><span>#222222</span></div>
 <div style="flex: 1; background: #f3f3f3; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; box-sizing: border-box; font-size: 12px; line-height: 1.3; color: #1c1b19; box-shadow: inset 0 0 0 1px #d8d6d0"><span>Light Gray</span><span>#F3F3F3</span></div>
 </div>
-<span style="font-size: 15px; line-height: 1.4; color: #67655f"><span style="color: #2a2a2a">Color.</span> Straight from the Armada palette.</span>
+<span style="font-size: 15px; line-height: 1.4; color: #8f8c84"><span style="color: #d4d2cc">Color.</span> Straight from the Armada palette.</span>
 </div>
 </div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 29px">
 <img src="assets/77593b0ba4765fdd13a546676f0ad18a.jpg" alt="Team lockups side by side: Team in orange script over ALUMNI in bold gray italic capitals on charcoal, and Team in white script over VARSITY in bold brown italic capitals on orange" style="display: block; width: 100%; height: auto; aspect-ratio: 1920 / 540; object-fit: cover; background: #222222">
-<span style="font-size: 15px; line-height: 1.4; color: #67655f; max-width: 760px"><span style="color: #2a2a2a">Team lockups.</span> One construction, two colorways, carried through the team desks, venue screens, scoreboards and fan posters.</span>
+<span style="font-size: 15px; line-height: 1.4; color: #8f8c84; max-width: 760px"><span style="color: #d4d2cc">Team lockups.</span> One construction, two colorways, carried through the team desks, venue screens, scoreboards and fan posters.</span>
 </div>
 </section>
 
-<section style="background: #21201e; color: #efeee9; margin-top: clamp(96px, 10vw, 144px)">
+<section style="background: #22211e; color: #eeede9; margin-top: clamp(96px, 10vw, 144px)">
 <div style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px); box-sizing: border-box">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid rgba(239, 238, 233, 0.25); padding-top: 16px">
 <h2 style="margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #a29f98">04</span>Rollout</h2>
@@ -136,11 +153,11 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 <img src="assets/95d83c20b7126994fb57b73c4d8b57f4.jpg" alt="Social post: the Homecoming 2025 lockup over a photo of the stage, with Team Alumni vs Team Varsity and Sunday March 9th, 2:00 PM, on Twitch" style="flex: 1 1 360px; min-width: 0; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #1a1a1a">
 <img src="assets/1d20a9d0e2da1d99599ffdcb5c9b45d6.jpg" alt="Social post: event details in a dark column beside three stacked photos of fans, players and the stage" style="flex: 1 1 360px; min-width: 0; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #1a1a1a">
 </div>
-<span style="font-size: 15px; line-height: 1.4; color: #a29f98; max-width: 760px"><span style="color: #efeee9">Promotion.</span> Social posts with the matchup, the date and where to watch.</span>
+<span style="font-size: 15px; line-height: 1.4; color: #a29f98; max-width: 760px"><span style="color: #eeede9">Promotion.</span> Social posts with the matchup, the date and where to watch.</span>
 </div>
 <div style="flex: 1 1 100%; display: flex; flex-direction: column; gap: 10px">
 <img src="assets/923157c25bb7ed721e34a26c5a84b2ad.webp" alt="Grid of Hall of Game Homecoming 2025 broadcast graphics: team scoreboards, game rules screens for Apex Legends, League of Legends and Halo Infinite, lower thirds, in-game overlays and champion announcements in orange, black and gray" style="display: block; width: 100%; height: auto; aspect-ratio: 20 / 9; object-fit: cover; background: #333231">
-<span style="font-size: 15px; line-height: 1.4; color: #a29f98"><span style="color: #efeee9">Broadcast and motion.</span> Animated backgrounds, transitions, looping logos, lower thirds, schedule, scoreboards and game overlays.</span>
+<span style="font-size: 15px; line-height: 1.4; color: #a29f98"><span style="color: #eeede9">Broadcast and motion.</span> Animated backgrounds, transitions, looping logos, lower thirds, schedule, scoreboards and game overlays.</span>
 </div>
 <div style="flex: 1 1 100%; min-width: 0; display: flex; flex-direction: column; gap: 10px">
 <img src="assets/37584a82b6aedad7220e9f66f9b95aae.jpg" alt="The event room on the day: casters at the desk in front of a crowd, with A and V shield banners on the walls and the Homecoming 2025 walk-in screen on the main display" style="display: block; width: 100%; aspect-ratio: 1060 / 600; object-fit: cover; background: #1a1a1a">
@@ -163,7 +180,7 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 <span style="font-size: 13px; color: #a29f98">Alumni win</span>
 </div>
 </div>
-<span style="font-size: 15px; line-height: 1.4; color: #a29f98; max-width: 760px; margin-top: 6px"><span style="color: #efeee9">In the venue.</span> One layout system mapped across every screen in the room: wall banners, the minitron, team desks, the main tron and the ribbon ring. A walk-in loop ran all day, and each team had a win scene that took over the room.</span>
+<span style="font-size: 15px; line-height: 1.4; color: #a29f98; max-width: 760px; margin-top: 6px"><span style="color: #eeede9">In the venue.</span> One layout system mapped across every screen in the room: wall banners, the minitron, team desks, the main tron and the ribbon ring. A walk-in loop ran all day, and each team had a win scene that took over the room.</span>
 </div>
 <div style="flex: 1 1 100%; min-width: 0; display: flex; flex-direction: column; gap: 20px">
 <div style="display: flex; flex-wrap: wrap; gap: 20px">
@@ -171,7 +188,7 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 <img src="assets/2e603631c8c3308db5c20debbda40df7.jpg" alt="Fan poster: Let’s Go in orange script over ALUMNI in bold gray italic capitals on charcoal" style="flex: 1 1 280px; min-width: 0; width: 100%; aspect-ratio: 1920 / 1350; object-fit: cover; display: block; background: #222222">
 <img src="assets/90b5e667ec8f16ff629779afbcea229d.jpg" alt="Fan poster: Good Game in cream script over WELL PLAYED in bold brown italic capitals on orange" style="flex: 1 1 280px; min-width: 0; width: 100%; aspect-ratio: 1920 / 1350; object-fit: cover; display: block; background: #f26a21">
 </div>
-<span style="font-size: 15px; line-height: 1.4; color: #a29f98; max-width: 760px"><span style="color: #efeee9">Fan posters.</span> A sign for each side of the crowd, plus one for the end of every match.</span>
+<span style="font-size: 15px; line-height: 1.4; color: #a29f98; max-width: 760px"><span style="color: #eeede9">Fan posters.</span> A sign for each side of the crowd, plus one for the end of every match.</span>
 </div>
 <div style="flex: 1 1 100%; min-width: 0; display: flex; flex-direction: column; gap: 20px">
 <img src="assets/91987bf9324615a27d16910636cb42df.jpg" alt="Two felt pennants: a charcoal Alumni pennant and an orange Varsity pennant, each with the Hall of Game Homecoming 2025 roundel" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #ffffff">
@@ -183,29 +200,29 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 <img src="assets/15e9384d13e1b63b9faae594b35a2a41.jpg" alt="A table of Homecoming 2025 lockup stickers, shield buttons, pennants and HOF Week patches at the event" style="flex: 1 1 360px; min-width: 0; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: #1a1a1a">
 <img src="assets/530c0f365d123d0ff40ffa82114b64c0.jpg" alt="Black event T-shirt: HOF Week on the front chest, and the Hall of Game Homecoming lockup with Welcome Home in orange script on the back" style="flex: 1 1 360px; min-width: 0; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; display: block; background: #ffffff">
 </div>
-<span style="font-size: 15px; line-height: 1.4; color: #a29f98; max-width: 760px"><span style="color: #efeee9">Swag and print.</span> The pennants were the most popular takeaway of the day. There were also credentials, buttons, stickers and an event T-shirt.</span>
+<span style="font-size: 15px; line-height: 1.4; color: #a29f98; max-width: 760px"><span style="color: #eeede9">Swag and print.</span> The pennants were the most popular takeaway of the day. There were also credentials, buttons, stickers and an event T-shirt.</span>
 </div>
 </div>
 </div>
 </section>
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
-<div style="display: flex; flex-wrap: wrap; gap: 32px 29px; border-top: 1px solid #2a2a2a; padding-top: 16px">
-<h2 style="flex: 1 1 280px; margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #67655f">05</span>Owning it end to end</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 32px 29px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="flex: 1 1 280px; margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #8f8c84">05</span>Owning it end to end</h2>
 <div style="flex: 3 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 40px; max-width: 860px">
 <p style="margin: 0; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -0.03em">I designed every piece: the brand, the venue screens and the stream.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 24px 29px; border-top: 1px solid #c8c5bd; padding-top: 16px">
-<div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 15px; color: #67655f">A call I made</span><span style="font-size: 17px; line-height: 1.4">Treating it as collegiate sports, not another esports event. Full Sail has no traditional college game day, so this gave students one, and it set the right tone for current students against returning alumni.</span></div>
-<div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 15px; color: #67655f">Making it work in the room</span><span style="font-size: 17px; line-height: 1.4">Every screen in the room had its own brightness, resolution and color, so on site I tuned color, content scale and animation speed screen by screen until the whole space read as one system.</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px 29px; border-top: 1px solid #3a3832; padding-top: 16px">
+<div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 15px; color: #8f8c84">A call I made</span><span style="font-size: 17px; line-height: 1.4">Treating it as collegiate sports, not another esports event. Full Sail has no traditional college game day, so this gave students one, and it set the right tone for current students against returning alumni.</span></div>
+<div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 15px; color: #8f8c84">Making it work in the room</span><span style="font-size: 17px; line-height: 1.4">Every screen in the room had its own brightness, resolution and color, so on site I tuned color, content scale and animation speed screen by screen until the whole space read as one system.</span></div>
 </div>
 <div style="display: flex; flex-direction: column">
-<span style="font-size: 15px; color: #67655f; padding-bottom: 10px">In the press</span>
-<a href="https://www.fullsail.edu/press-releases/2025/full-sail-university-kicks-off-15th-annual-hall-of-fame-week-with-hall-of-game-homecoming-2025-esports-event" class="ul-link" style="display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-top: 1px solid #c8c5bd; color: #2a2a2a">
-<span style="font-size: 13px; color: #67655f">Full Sail press release, March 2025</span>
+<span style="font-size: 15px; color: #8f8c84; padding-bottom: 10px">In the press</span>
+<a href="https://www.fullsail.edu/press-releases/2025/full-sail-university-kicks-off-15th-annual-hall-of-fame-week-with-hall-of-game-homecoming-2025-esports-event" class="ul-link" style="display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-top: 1px solid #3a3832; color: #d4d2cc">
+<span style="font-size: 13px; color: #8f8c84">Full Sail press release, March 2025</span>
 <span style="font-size: 19px; line-height: 1.3; letter-spacing: -0.015em">Full Sail University Kicks Off 15th Annual Hall of Fame Week with Hall of Game: Homecoming 2025 ↗</span>
 </a>
-<a href="https://www.fullsail.edu/about/full-sail-stories/full-sail-celebrates-gaming-and-esports-at-hall-of-fame-15" class="ul-link" style="display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-top: 1px solid #c8c5bd; border-bottom: 1px solid #c8c5bd; color: #2a2a2a">
-<span style="font-size: 13px; color: #67655f">Full Sail Stories, April 2025</span>
+<a href="https://www.fullsail.edu/about/full-sail-stories/full-sail-celebrates-gaming-and-esports-at-hall-of-fame-15" class="ul-link" style="display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-top: 1px solid #3a3832; border-bottom: 1px solid #3a3832; color: #d4d2cc">
+<span style="font-size: 13px; color: #8f8c84">Full Sail Stories, April 2025</span>
 <span style="font-size: 19px; line-height: 1.3; letter-spacing: -0.015em">Full Sail Celebrates Gaming and Esports at Hall of Fame 15 ↗</span>
 </a>
 </div>
@@ -214,24 +231,24 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 </section>
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
-<div style="display: flex; flex-wrap: wrap; gap: 32px 29px; border-top: 1px solid #2a2a2a; padding-top: 16px">
-<h2 style="flex: 1 1 280px; margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #67655f">06</span>Outcome</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 32px 29px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="flex: 1 1 280px; margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #8f8c84">06</span>Outcome</h2>
 <div style="flex: 3 1 560px; min-width: 0; display: flex; flex-wrap: wrap; gap: 32px 29px">
-<div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: clamp(44px, 5vw, 72px); line-height: 0.95; letter-spacing: -0.05em">3</span><span style="font-size: 15px; color: #67655f">Games across the day, each with its own rules screens, overlays and scoreboards</span></div>
-<div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: clamp(44px, 5vw, 72px); line-height: 0.95; letter-spacing: -0.05em">Varsity</span><span style="font-size: 15px; color: #67655f">Took the trophy as Homecoming 2025 champions</span></div>
+<div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: clamp(44px, 5vw, 72px); line-height: 0.95; letter-spacing: -0.05em">3</span><span style="font-size: 15px; color: #8f8c84">Games across the day, each with its own rules screens, overlays and scoreboards</span></div>
+<div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: clamp(44px, 5vw, 72px); line-height: 0.95; letter-spacing: -0.05em">Varsity</span><span style="font-size: 15px; color: #8f8c84">Took the trophy as Homecoming 2025 champions</span></div>
 </div>
 </div>
 </section>
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(120px, 12vw, 176px) clamp(20px, 5vw, 72px) 40px; box-sizing: border-box">
-<a href="armada-hq.html" class="next" style="display: flex; flex-direction: column; gap: 14px; border-top: 1px solid #2a2a2a; padding-top: 16px; color: #2a2a2a; text-decoration: none">
-<span style="font-size: 17px; color: #67655f">Next case study</span>
+<a href="armada-hq.html" class="next" style="display: flex; flex-direction: column; gap: 14px; border-top: 1px solid #d4d2cc; padding-top: 16px; color: #d4d2cc; text-decoration: none">
+<span style="font-size: 17px; color: #8f8c84">Next case study</span>
 <span class="next-title" style="font-size: clamp(46px, 7vw, 108px); line-height: 0.93; letter-spacing: -0.055em">Armada HQ →</span>
 </a>
-<footer style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0 32px; margin-top: clamp(80px, 9vw, 128px); border-top: 1px solid #2a2a2a; padding-top: 6px; font-size: 15px">
+<footer style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0 32px; margin-top: clamp(80px, 9vw, 128px); border-top: 1px solid #d4d2cc; padding-top: 6px; font-size: 15px">
 <span style="padding: 13px 0">© 2026 Austin Remer</span>
-<a href="mailto:austin.remer@gmail.com" class="ul-link" style="color: #2a2a2a; padding: 13px 0">austin.remer@gmail.com</a>
-<a href="#top" class="ul-link" style="color: #2a2a2a; padding: 13px 0">Back to top ↑</a>
+<a href="mailto:austin.remer@gmail.com" class="ul-link" style="color: #d4d2cc; padding: 13px 0">austin.remer@gmail.com</a>
+<a href="#top" class="ul-link" style="color: #d4d2cc; padding: 13px 0">Back to top ↑</a>
 </footer>
 </section>
 

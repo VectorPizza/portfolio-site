@@ -13,10 +13,10 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a2a2a'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial,sans-serif' font-size='16' fill='%23efeee9' text-anchor='middle'%3EAR%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&amp;family=Albert+Sans:wght@400;500&amp;family=Schibsted+Grotesk:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&amp;family=Geist+Mono:wght@400;500&amp;family=Albert+Sans:wght@400;500&amp;family=Schibsted+Grotesk:wght@400;500&amp;display=swap">
 <style>
-body{margin:0;background:#efeee9}
-a{color:#2a2a2a}a:hover{color:#000000}
+body{margin:0;background:#1a1917}
+a{color:#d4d2cc}a:hover{color:#eeede9}
 a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 .ul-link{text-decoration:none}
 .ul-link:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
@@ -35,36 +35,53 @@ main>section:nth-child(2)[aria-label]{animation-delay:.4s}
 main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:not(.card img):not(figure img)){animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 180px}
 }
 }
+
+/* chassis theme */
+html{background:#1a1917;color-scheme:dark}
+::selection{background:#f06a26;color:#1a1917}
+#top h1,#top h2,#top h3,#top .next-title{color:#eeede9}
+#top h2>span:first-child{font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;letter-spacing:.06em;color:#f06a26!important}
+#top dt{font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px!important;letter-spacing:.06em;text-transform:uppercase}
+#top footer{font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px!important;letter-spacing:.06em;text-transform:uppercase}
+#top footer a:hover{color:#eeede9!important}
+.chtop{position:sticky;top:0;z-index:20;background:color-mix(in oklab,#1a1917 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #3a3832}
+.chtop-in{max-width:1440px;margin:0 auto;padding:0 clamp(16px,2.4vw,36px);box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 28px;min-height:56px;font-size:17px;line-height:1.4;letter-spacing:-.01em;color:#d4d2cc}
+.chtop a{text-decoration:none;color:#d4d2cc}
+.chtop a:hover{color:#eeede9}
+.chtop nav{display:flex;flex-wrap:wrap;gap:0 22px}
+.chtop nav a,.chtop .name{padding:12px 0}
+.chtop .role{color:#8f8c84}
+.chtop .status{display:flex;align-items:center;gap:9px;font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.chtop .led{width:8px;height:8px;border-radius:50%;background:#f06a26;box-shadow:0 0 0 3px color-mix(in oklab,#f06a26 22%,transparent)}
+@media (max-width:640px){.chtop .role{display:none}}
 </style>
 <style>.card-static{cursor:default}.card-static:hover .card-title{text-decoration:none!important}.card-static:hover .card-img{transform:none!important;filter:none!important}</style>
 <script data-goatcounter="https://arportfolio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
-<div id="top" style="background: #efeee9; color: #2a2a2a; font-family: &#x27;Geist&#x27;, &#x27;Helvetica Neue&#x27;, Helvetica, sans-serif; font-weight: 400; font-feature-settings: 'tnum' 1; min-height: 100vh">
+<div id="top" style="background: #1a1917; color: #d4d2cc; font-family: &#x27;Geist&#x27;, &#x27;Helvetica Neue&#x27;, Helvetica, sans-serif; font-weight: 400; font-feature-settings: 'tnum' 1; min-height: 100vh">
 
-<header style="max-width: 1200px; margin: 0 auto; padding: 14px clamp(20px, 5vw, 72px); box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0 32px; font-size: 17px; line-height: 1.3; letter-spacing: -0.01em">
-<a href="./" class="ul-link" style="color: #2a2a2a; padding: 11px 0">Austin Remer</a>
-<span>Designer, Orlando FL</span>
-<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 0 24px">
-<a href="./" class="ul-link" style="color: #2a2a2a; padding: 11px 0">Work</a>
-<a href="./" class="ul-link" style="color: #2a2a2a; padding: 11px 0">Archive</a>
-<a href="./" class="ul-link" style="color: #2a2a2a; padding: 11px 0">About</a>
-<a href="./" class="ul-link" style="color: #2a2a2a; padding: 11px 0">Contact</a>
-</nav>
+<header class="chtop">
+<div class="chtop-in">
+<a class="name" href="./">Austin Remer</a>
+<span class="role">Designer, Orlando FL</span>
+<nav aria-label="Main"><a href="./#work">Work</a><a href="./#archive">Archive</a><a href="./#about">About</a><a href="./#contact">Contact</a></nav>
+<span class="status"><span class="led" aria-hidden="true"></span>Open to art director roles</span>
+</div>
 </header>
 
 <main>
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(48px, 5vw, 80px) clamp(20px, 5vw, 72px) clamp(48px, 5vw, 72px); box-sizing: border-box">
-<a href="./" class="ul-link" style="display: inline-block; color: #67655f; font-size: 17px; letter-spacing: -0.01em; padding: 11px 0">← All work</a>
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; margin-top: clamp(32px, 4vw, 56px); font-size: 21px; letter-spacing: -0.015em; color: #67655f"><span>Full Sail University</span><span>Hall of Game 2023</span></div>
+<a href="./" class="ul-link" style="display: inline-block; color: #8f8c84; font-size: 17px; letter-spacing: -0.01em; padding: 11px 0">← All work</a>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; margin-top: clamp(32px, 4vw, 56px); font-size: 21px; letter-spacing: -0.015em; color: #8f8c84"><span>Full Sail University</span><span>Hall of Game 2023</span></div>
 <h1 style="margin: 16px 0 0; max-width: 1200px; font-size: clamp(46px, 7vw, 108px); font-weight: 400; line-height: 0.93; letter-spacing: -0.055em">Hall of Game: Paragon</h1>
-<p style="margin: clamp(28px, 3vw, 40px) 0 0; max-width: 980px; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -0.03em; color: #85827a">The 2023 Hall of Game. That year’s Hall of Fame theme was the supernatural. The name came from the word itself: a paragon is the best of its kind, which is what every team was competing to be.</p>
-<dl style="margin: clamp(48px, 5vw, 72px) 0 0; display: flex; flex-wrap: wrap; gap: 0 29px; border-top: 1px solid #2a2a2a">
-<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #67655f">My role</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Design lead</dd></div>
-<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #67655f">Scope</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Key art, logo and animation, poster, arena screens, credentials and pins</dd></div>
-<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #67655f">Where</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Orlando Health Fortress, Full Sail University</dd></div>
-<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #67655f">Year</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">2023</dd></div>
+<p style="margin: clamp(28px, 3vw, 40px) 0 0; max-width: 980px; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -0.03em; color: #8f8c84">The 2023 Hall of Game. That year’s Hall of Fame theme was the supernatural. The name came from the word itself: a paragon is the best of its kind, which is what every team was competing to be.</p>
+<dl style="margin: clamp(48px, 5vw, 72px) 0 0; display: flex; flex-wrap: wrap; gap: 0 29px; border-top: 1px solid #d4d2cc">
+<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">My role</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Design lead</dd></div>
+<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">Scope</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Key art, logo and animation, poster, arena screens, credentials and pins</dd></div>
+<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">Where</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Orlando Health Fortress, Full Sail University</dd></div>
+<div style="flex: 1 1 200px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">Year</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">2023</dd></div>
 </dl>
 </section>
 
@@ -73,22 +90,22 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 </section>
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
-<div style="display: flex; flex-wrap: wrap; gap: 32px 29px; border-top: 1px solid #2a2a2a; padding-top: 16px">
-<h2 style="flex: 1 1 280px; margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #67655f">01</span>The art</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 32px 29px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="flex: 1 1 280px; margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #8f8c84">01</span>The art</h2>
 <div style="flex: 3 1 560px; min-width: 0; max-width: 860px">
-<p style="margin: 0; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -0.03em">Making the art was the best part of this one. <span style="color: #85827a">The key art set the look, and everything else came from it: the intro title, the poster and the screens in the arena.</span></p>
+<p style="margin: 0; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -0.03em">Making the art was the best part of this one. <span style="color: #8f8c84">The key art set the look, and everything else came from it: the intro title, the poster and the screens in the arena.</span></p>
 </div>
 </div>
 <figure style="margin: 40px 0 0; display: flex; flex-direction: column; gap: 10px">
 <video src="assets/84a6ec838484ff79f90f817f3a204c60.mp4" poster="assets/c01c5ec791638a1b85612aac57ec1124.jpg" controls="controls" playsinline="playsinline" preload="metadata" aria-label="Paragon intro title: a dark peak, the beam breaking through the clouds, then the chrome Hall of Game Paragon title, powered by MSI" style="display: block; width: 100%; aspect-ratio: 16 / 9; background: #1a1030"></video>
-<figcaption style="font-size: 15px; line-height: 1.4; color: #67655f"><span style="color: #2a2a2a">Intro title.</span></figcaption>
+<figcaption style="font-size: 15px; line-height: 1.4; color: #8f8c84"><span style="color: #d4d2cc">Intro title.</span></figcaption>
 </figure>
 <div style="display: flex; justify-content: center; margin-top: 48px">
 <img src="assets/0a0de7336129182dc62a4f6484f871af.jpg" alt="Paragon event poster: the peak and beam of light with the Paragon wordmark, listing Overwatch, Smite and Valorant" loading="lazy" style="flex: 1 1 280px; min-width: 0; max-width: 520px; display: block; width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; background: #1a1030">
 </div>
 </section>
 
-<section style="background: #21201e; color: #efeee9; margin-top: clamp(96px, 10vw, 144px)">
+<section style="background: #22211e; color: #eeede9; margin-top: clamp(96px, 10vw, 144px)">
 <div style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px); box-sizing: border-box">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid rgba(239, 238, 233, 0.25); padding-top: 16px">
 <h2 style="margin: 0; display: flex; align-items: baseline; gap: 16px; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em"><span style="color: #a29f98">02</span>At the event</h2>
@@ -107,14 +124,14 @@ main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:n
 </section>
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(120px, 12vw, 176px) clamp(20px, 5vw, 72px) 40px; box-sizing: border-box">
-<a href="./#work" class="next" style="display: flex; flex-direction: column; gap: 14px; border-top: 1px solid #2a2a2a; padding-top: 16px; color: #2a2a2a; text-decoration: none">
-<span style="font-size: 17px; color: #67655f">Back to</span>
+<a href="./#work" class="next" style="display: flex; flex-direction: column; gap: 14px; border-top: 1px solid #d4d2cc; padding-top: 16px; color: #d4d2cc; text-decoration: none">
+<span style="font-size: 17px; color: #8f8c84">Back to</span>
 <span class="next-title" style="font-size: clamp(46px, 7vw, 108px); line-height: 0.93; letter-spacing: -0.055em">All work →</span>
 </a>
-<footer style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0 32px; margin-top: clamp(80px, 9vw, 128px); border-top: 1px solid #2a2a2a; padding-top: 6px; font-size: 15px">
+<footer style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0 32px; margin-top: clamp(80px, 9vw, 128px); border-top: 1px solid #d4d2cc; padding-top: 6px; font-size: 15px">
 <span style="padding: 13px 0">© 2026 Austin Remer</span>
-<a href="mailto:austin.remer@gmail.com" class="ul-link" style="color: #2a2a2a; padding: 13px 0">austin.remer@gmail.com</a>
-<a href="#top" class="ul-link" style="color: #2a2a2a; padding: 13px 0">Back to top ↑</a>
+<a href="mailto:austin.remer@gmail.com" class="ul-link" style="color: #d4d2cc; padding: 13px 0">austin.remer@gmail.com</a>
+<a href="#top" class="ul-link" style="color: #d4d2cc; padding: 13px 0">Back to top ↑</a>
 </footer>
 </section>
 
