@@ -19,6 +19,8 @@ TITLE = 'Austin Remer — Designer'
 DESC = 'Austin Remer designs brands, from the logo to everything it ends up on: screens, print, merch and spaces.'
 
 s = open(os.path.join(SRC, 'index.html')).read()
+# preview-only tuning panel never goes live
+s = re.sub(r'\n?<!--TUNE-->.*?<!--/TUNE-->\n?', '\n', s, flags=re.S)
 
 def rep(a, b, n=1):
     global s
