@@ -147,7 +147,7 @@ img,video{display:block;max-width:100%}
 .four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 28px;margin-top:clamp(64px,7vw,104px);border-top:1px solid var(--rule);padding-top:22px}
 .four div{display:flex;flex-direction:column;gap:8px;min-width:0}
 .four h3{margin:0;font-size:20px;font-weight:400;letter-spacing:-.02em;color:var(--paper)}
-.four p{margin:0;font-size:15px;color:var(--dim);max-width:30ch}
+.four p{margin:0;font-size:15px;color:var(--dim);max-width:34ch}
 
 /* archive */
 .archive{padding-block:clamp(88px,10vw,140px)}
@@ -186,6 +186,9 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .aboutgrid .copy{display:flex;flex-direction:column;justify-content:space-between;gap:48px;min-width:0}
 .aboutgrid .copy p{margin:0;max-width:30ch;font-size:clamp(26px,2.8vw,40px);line-height:1.1;letter-spacing:-.035em;color:var(--paper)}
+.aboutgrid .bio{display:flex;flex-direction:column;gap:22px}
+.aboutgrid .bio p{max-width:34ch;font-size:clamp(22px,2.2vw,32px);line-height:1.15;letter-spacing:-.03em}
+.aboutgrid .bio p.bio-more{max-width:52ch;font-size:clamp(17px,1.35vw,19px);line-height:1.5;letter-spacing:-.01em;color:var(--dim)}
 .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;border-top:1px solid var(--rule);padding-top:18px}
 .facts div{display:flex;flex-direction:column;gap:6px;min-width:0}
 .facts .mono{color:var(--dim)}
@@ -266,7 +269,7 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
     </div>
 
     <div class="hero">
-      <h1>I build more than brands</h1>
+      <h1>Building more than brands.</h1>
       <dl class="spec">
         <dt class="mono">Based</dt><dd>Orlando, FL, working anywhere</dd>
         <dt class="mono">In-house</dt><dd>Full Sail University, 2012–2026</dd>
@@ -280,13 +283,11 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 
   <div class="wrap">
     <section class="work" id="work">
-      <div class="shead"><h2><span class="mono">01</span>Selected work</h2><span class="dim">With my role on each</span></div>
+      <div class="shead"><h2><span class="mono">01</span>Selected work</h2></div>
       <div class="grid">
 
         <a class="card w6" href="hall-of-game-homecoming.html">
-          <div class="crop"><span class="c1"></span><span class="c2"></span>
-            <div class="frame"><video class="hover" data-rest="1" src="assets/c/homecoming.mp4" poster="assets/c/homecoming-1s.jpg" muted loop playsinline preload="metadata" aria-label="Hall of Game Homecoming 2025 logo on charcoal"></video></div>
-          </div>
+          <div class="frame"><video class="hover" data-rest="1" src="assets/c/homecoming.mp4" poster="assets/c/homecoming-1s.jpg" muted loop playsinline preload="metadata" aria-label="Hall of Game Homecoming 2025 logo on charcoal"></video></div>
           <div class="meta">
             <h3><span class="no">01</span>Hall of Game: Homecoming 2025</h3>
           </div>
@@ -353,12 +354,12 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
   <section class="practice" aria-labelledby="practice-h">
     <div class="wrap">
       <div class="shead"><h2 id="practice-h"><span class="mono">02</span>How I work</h2><span class="dim">Better is possible</span></div>
-      <p class="lead">On an event, I set the direction, build the system and keep every piece consistent, <span>from the broadcast to the walls.</span></p>
+      <p class="lead">I sweat the small stuff when it comes to design, and I’m always looking for ways to push an idea a little further. <span>I’ve found there’s usually room for a bit more personality, and sometimes one more round makes all the difference.</span></p>
       <div class="four">
-        <div><span class="mono dim">a.</span><h3>Direction</h3><p>The concept, the look and the rules that let a team build on them.</p></div>
-        <div><span class="mono dim">b.</span><h3>Identity systems</h3><p>Marks, type and graphics for events and brands that change every year but stay recognizable.</p></div>
-        <div><span class="mono dim">c.</span><h3>Environments and murals</h3><p>Spaces and large-format work, from design through install.</p></div>
-        <div><span class="mono dim">d.</span><h3>Illustration and motion</h3><p>Badges, icons, schematics and animation.</p></div>
+        <div><span class="mono dim">a.</span><h3>Art Direction</h3><p>From the first brainstorm to the final details, I shape the visual direction and refine until it all clicks.</p></div>
+        <div><span class="mono dim">b.</span><h3>Branding &amp; Identity</h3><p>Looking beyond the visuals to understand what makes a brand unique, then turning that understanding into something people actually connect with.</p></div>
+        <div><span class="mono dim">c.</span><h3>Illustration &amp; Motion</h3><p>Bringing original ideas to life through illustration, adapting them to fit each project, and using motion to bring them to life in ways still images can’t.</p></div>
+        <div><span class="mono dim">d.</span><h3>Environmental &amp; Experiential Design</h3><p>Taking design off the screen and into the real world, turning ordinary spaces into something people can experience.</p></div>
       </div>
     </div>
   </section>
@@ -391,7 +392,10 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
       <div class="aboutgrid">
         <div class="portrait"><img src="assets/c/portrait.jpg" alt="Portrait of Austin Remer in a black T-shirt" loading="lazy"></div>
         <div class="copy">
-          <p>I'm Austin. I take brands from the first idea to final production, across screens, print, motion and the spaces people walk into.</p>
+          <div class="bio">
+            <p>Hey, I’m Austin. I’ve been designing for more than 15 years, and somehow, I’m still the guy obsessing over the smallest details. Especially the ones that make the biggest difference.</p>
+            <p class="bio-more">I spend an unreasonable amount of time at my computer, but I’m trying to change! I’ve got a thing for vintage stereos, film cameras, and just about anything with knobs and dials. I’m constantly thinking about outer space, 90s cartoons, and sci-fi movies.</p>
+          </div>
           <div class="facts">
             <div><span class="mono">Platinum Creative, Full Sail</span><span>In-house designer, 2012–2026</span></div>
             <div><span class="mono">I've led</span><span>Every Hall of Game since the first, in 2019</span></div>
