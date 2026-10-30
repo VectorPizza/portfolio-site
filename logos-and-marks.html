@@ -21,28 +21,13 @@ a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 .ul-link{text-decoration:none}
 .ul-link:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
 .next:hover .next-title{text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:1px}
-/* motion */
-@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion: no-preference){
-main>section:first-child>*,main>section:nth-child(2)[aria-label]{animation:rise 1s cubic-bezier(.19,1,.22,1) both}
-main>section:first-child>*:nth-child(2){animation-delay:.07s}
-main>section:first-child>*:nth-child(3){animation-delay:.14s}
-main>section:first-child>*:nth-child(4){animation-delay:.21s}
-main>section:first-child>*:nth-child(5){animation-delay:.28s}
-main>section:first-child>*:nth-child(n+6){animation-delay:.35s}
-main>section:nth-child(2)[aria-label]{animation-delay:.4s}
-@supports (animation-timeline: view()){
-main>section:not(:first-child):not([aria-label]) :is(.card,h2,figure,video,img:not(.card img):not(figure img)){animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 180px}
-}
-}
 
 /* chassis theme */
 html{background:#1a1917;color-scheme:dark}
 ::selection{background:#f06a26;color:#1a1917}
 #top h1,#top h2,#top h3,#top .next-title{color:#eeede9}
-#top h2>span:first-child{font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;letter-spacing:.06em;color:#f06a26!important}
-#top dt{font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px!important;letter-spacing:.06em;text-transform:uppercase}
-#top footer{font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px!important;letter-spacing:.06em;text-transform:uppercase}
+#top dt{font-size:14px!important}
+#top footer{font-size:14px!important}
 #top footer a:hover{color:#eeede9!important}
 .chtop{position:sticky;top:0;z-index:20;background:color-mix(in oklab,#1a1917 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #3a3832}
 .chtop-in{max-width:1440px;margin:0 auto;padding:0 clamp(16px,2.4vw,36px);box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 28px;min-height:56px;font-size:17px;line-height:1.4;letter-spacing:-.01em;color:#d4d2cc}
@@ -73,8 +58,7 @@ html{background:#1a1917;color-scheme:dark}
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(48px, 5vw, 80px) clamp(20px, 5vw, 72px) clamp(48px, 5vw, 72px); box-sizing: border-box">
 <a href="./" class="ul-link" style="display: inline-block; color: #8f8c84; font-size: 17px; letter-spacing: -0.01em; padding: 11px 0">← All work</a>
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; margin-top: clamp(32px, 4vw, 56px); font-size: 21px; letter-spacing: -0.015em; color: #8f8c84"><span>Identity</span><span>Logo design</span></div>
-<h1 style="margin: 16px 0 0; max-width: 1200px; font-size: clamp(46px, 7vw, 108px); font-weight: 400; line-height: 0.93; letter-spacing: -0.055em">Logos and Marks</h1>
+<h1 style="margin: clamp(32px, 4vw, 56px) 0 0; max-width: 1200px; font-size: clamp(46px, 7vw, 108px); font-weight: 400; line-height: 0.93; letter-spacing: -0.055em">Logos and Marks</h1>
 <p style="margin: clamp(28px, 3vw, 40px) 0 0; max-width: 980px; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -0.03em; color: #8f8c84">Logos for events, programs and places.</p>
 </section>
 

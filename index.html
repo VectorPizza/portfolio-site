@@ -43,7 +43,7 @@ a{color:inherit}
 a:focus-visible,button:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 img,video{display:block;max-width:100%}
 .wrap{max-width:1440px;margin:0 auto;padding-left:max(var(--gut),env(safe-area-inset-left,0px));padding-right:max(var(--gut),env(safe-area-inset-right,0px))}
-.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.mono{font-size:14px;letter-spacing:-.005em}
 .dim{color:var(--dim)}
 
 /* top bar */
@@ -97,7 +97,6 @@ img,video{display:block;max-width:100%}
 /* section heads */
 .shead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;border-top:1px solid var(--alu);padding-top:14px}
 .shead h2{margin:0;display:flex;gap:16px;align-items:baseline;font-size:21px;font-weight:400;letter-spacing:-.02em;color:var(--paper)}
-.shead h2 .mono{color:var(--signal)}
 
 /* work */
 .work{padding-block:clamp(24px,3vw,40px) clamp(88px,10vw,150px)}
@@ -282,13 +281,13 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 
   <div class="wrap">
     <section class="work" id="work">
-      <div class="shead"><h2><span class="mono">01</span>Selected work</h2></div>
+      <div class="shead"><h2>Selected work</h2></div>
       <div class="grid">
 
         <a class="card w6" href="hall-of-game-homecoming.html">
           <div class="frame"><video class="hover" data-rest="1" src="assets/c/homecoming.mp4" poster="assets/c/homecoming-1s.jpg" muted loop playsinline preload="metadata" aria-label="Hall of Game Homecoming 2025 logo on charcoal"></video></div>
           <div class="meta">
-            <h3><span class="no">01</span>Hall of Game: Homecoming 2025</h3>
+            <h3>Hall of Game: Homecoming 2025</h3>
           </div>
           <div class="sheet">
             <div><span class="mono dim">Client</span><span>Full Sail University</span></div>
@@ -300,50 +299,50 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 
         <a class="card w3" href="armada-hq.html">
           <div class="frame"><img src="assets/c/armada-hq.jpg" alt="The Armada HQ esports room at Full Sail, with branded walls and players at their stations" loading="lazy"></div>
-          <div class="meta"><div class="row"><h3><span class="no">02</span>Armada HQ</h3><span class="mono">2025</span></div><span class="mono">Full Sail · Environmental design · Lead designer</span></div>
+          <div class="meta"><div class="row"><h3>Armada HQ</h3><span class="mono">2025</span></div><span class="mono">Environmental design for Full Sail. Lead designer.</span></div>
         </a>
         <a class="card w3" href="hall-of-game-infinite-arenas.html">
           <div class="frame"><video class="hover" src="assets/c/ia-reveal-loop.mp4" poster="assets/c/ia-reveal-15s.jpg" muted loop playsinline preload="none" aria-label="Hall of Game Infinite Arenas logo: chrome italic logotype in a blue light-speed tunnel"></video></div>
-          <div class="meta"><div class="row"><h3><span class="no">03</span>Hall of Game: Infinite Arenas</h3><span class="mono">2022</span></div><span class="mono">Full Sail · Event identity, 3D, motion · Sole designer</span></div>
+          <div class="meta"><div class="row"><h3>Hall of Game: Infinite Arenas</h3><span class="mono">2022</span></div><span class="mono">Event identity, 3D and motion for Full Sail. Sole designer.</span></div>
         </a>
 
         <a class="card w6" href="full-sail-armada.html">
           <div class="frame" style="aspect-ratio:21/9"><img src="assets/c/armada.jpg" alt="Full Sail Armada wordmark over charcoal with orange slashes" loading="lazy"></div>
-          <div class="meta"><div class="row"><h3><span class="no">04</span>Full Sail Armada</h3><span class="mono">2018–2026</span></div><span class="mono">Full Sail · Brand identity, redesigned each season · Created the brand</span></div>
+          <div class="meta"><div class="row"><h3>Full Sail Armada</h3><span class="mono">2018–2026</span></div><span class="mono">Brand identity for Full Sail’s esports program, redesigned every season.</span></div>
         </a>
 
         <a class="card w3" href="vector-pizza.html">
           <div class="frame light vp"><img src="assets/c/vp-logo.png" alt="Vector Pizza logo: a pizza slice in a scalloped orange seal" loading="lazy"></div>
-          <div class="meta"><div class="row"><h3><span class="no">05</span>Vector Pizza</h3><span class="mono">2017</span></div><span class="mono">Personal brand · Stickers, pins, patches</span></div>
+          <div class="meta"><div class="row"><h3>Vector Pizza</h3><span class="mono">2017</span></div><span class="mono">My own shop: stickers, pins and patches.</span></div>
         </a>
         <a class="card w3" href="stellar.html">
           <div class="frame"><img src="assets/c/stellar.jpg" alt="Stellar logotype in spaced white capitals over a dark starfield" loading="lazy"></div>
-          <div class="meta"><div class="row"><h3><span class="no">06</span>Stellar</h3><span class="mono">2022</span></div><span class="mono">Full Sail · Hall of Fame concept, unproduced · Lead designer</span></div>
+          <div class="meta"><div class="row"><h3>Stellar</h3><span class="mono">2022</span></div><span class="mono">Hall of Fame concept for Full Sail, unproduced. Lead designer.</span></div>
         </a>
 
         <a class="card" href="hall-of-game-paragon.html">
           <div class="frame"><video class="hover" src="assets/c/paragon-blast.mp4" poster="assets/c/paragon-blast.jpg" muted loop playsinline preload="none" aria-label="Hall of Game Paragon key art: a lone peak under a beam of light"></video></div>
-          <div class="meta"><div class="row"><h3><span class="no">07</span>Hall of Game: Paragon</h3><span class="mono">2023</span></div><span class="mono">Full Sail · Key art, event identity</span></div>
+          <div class="meta"><div class="row"><h3>Hall of Game: Paragon</h3><span class="mono">2023</span></div><span class="mono">Key art and event identity for Full Sail.</span></div>
         </a>
         <a class="card" href="game-infographics.html">
           <div class="frame"><img src="assets/c/infographics.jpg" alt="League of Legends infographic with game facts in three columns" loading="lazy"></div>
-          <div class="meta"><div class="row"><h3><span class="no">08</span>Game Infographics</h3><span class="mono">2020–21</span></div><span class="mono">Armada social · Information design</span></div>
+          <div class="meta"><div class="row"><h3>Game Infographics</h3><span class="mono">2020–21</span></div><span class="mono">Information design for Armada social.</span></div>
         </a>
         <a class="card" href="logos-and-marks.html">
           <div class="frame quad" role="img" aria-label="Four logos: Code Orlando, Florida Esports Summit, NACE Spring Grand Finals and Full Sail Dream Lofts"><img src="assets/c/logo-code.jpg" alt="" loading="lazy"><img src="assets/c/logo-fes.jpg" alt="" loading="lazy"><img src="assets/c/logo-nace.jpg" alt="" loading="lazy"><img src="assets/c/logo-lofts.jpg" alt="" loading="lazy"></div>
-          <div class="meta"><div class="row"><h3><span class="no">09</span>Logos and Marks</h3><span class="mono">Various</span></div><span class="mono">Events, programs, places · Identity</span></div>
+          <div class="meta"><div class="row"><h3>Logos and Marks</h3><span class="mono">Various</span></div><span class="mono">Identity for events, programs and places.</span></div>
         </a>
         <a class="card" href="nasa-schematic-illustrations.html">
           <div class="frame light contain"><img src="assets/c/nasa-lm.jpg" alt="Line schematic illustration of the Apollo lunar module" loading="lazy"></div>
-          <div class="meta"><div class="row"><h3><span class="no">10</span>NASA Schematic Illustrations</h3><span class="mono">2025–2026</span></div><span class="mono">Personal · Technical illustration series</span></div>
+          <div class="meta"><div class="row"><h3>NASA Schematic Illustrations</h3><span class="mono">2025–2026</span></div><span class="mono">A personal technical illustration series.</span></div>
         </a>
         <a class="card" href="purdue-space-patch.html">
           <div class="frame"><img src="assets/c/purdue.jpg" alt="The Purdue Cradle of Astronauts patch with the Perseverance rover, next to a Mars 2020 T-shirt" loading="lazy"></div>
-          <div class="meta"><div class="row"><h3><span class="no">11</span>Purdue Space Patch</h3><span class="mono">2020</span></div><span class="mono">Purdue, via Learfield · Patch design</span></div>
+          <div class="meta"><div class="row"><h3>Purdue Space Patch</h3><span class="mono">2020</span></div><span class="mono">Patch design for Purdue, via Learfield.</span></div>
         </a>
         <a class="card" href="murals.html">
           <div class="frame"><img src="assets/c/murals.jpg" alt="The It's Been Unreal mural installed outdoors in navy and white" loading="lazy"></div>
-          <div class="meta"><div class="row"><h3><span class="no">12</span>Murals</h3><span class="mono">2022–23</span></div><span class="mono">Full Sail · Illustrator, art director</span></div>
+          <div class="meta"><div class="row"><h3>Murals</h3><span class="mono">2022–23</span></div><span class="mono">Murals for Full Sail. Illustrator and art director.</span></div>
         </a>
 
       </div>
@@ -352,20 +351,20 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 
   <section class="practice" aria-labelledby="practice-h">
     <div class="wrap">
-      <div class="shead"><h2 id="practice-h"><span class="mono">02</span>How I work</h2><span class="dim">Better is possible</span></div>
+      <div class="shead"><h2 id="practice-h">How I work</h2></div>
       <p class="lead">I sweat the small stuff when it comes to design, and I’m always looking for ways to push an idea a little further. <span>I’ve found there’s usually room for a bit more personality, and sometimes one more round makes all the difference.</span></p>
       <div class="four">
-        <div><span class="mono dim">a.</span><h3>Art Direction</h3><p>From the first brainstorm to the final details, I shape the visual direction and refine until it all clicks.</p></div>
-        <div><span class="mono dim">b.</span><h3>Branding &amp; Identity</h3><p>Looking beyond the visuals to understand what makes a brand unique, then turning that understanding into something people actually connect with.</p></div>
-        <div><span class="mono dim">c.</span><h3>Illustration &amp; Motion</h3><p>Bringing original ideas to life through illustration, adapting them to fit each project, and using motion to bring them to life in ways still images can’t.</p></div>
-        <div><span class="mono dim">d.</span><h3>Environmental &amp; Experiential Design</h3><p>Taking design off the screen and into the real world, turning ordinary spaces into something people can experience.</p></div>
+        <div><h3>Art Direction</h3><p>From the first brainstorm to the final details, I shape the visual direction and refine until it all clicks.</p></div>
+        <div><h3>Branding &amp; Identity</h3><p>Looking beyond the visuals to understand what makes a brand unique, then turning that understanding into something people actually connect with.</p></div>
+        <div><h3>Illustration &amp; Motion</h3><p>Bringing original ideas to life through illustration, adapting them to fit each project, and using motion to bring them to life in ways still images can’t.</p></div>
+        <div><h3>Environmental &amp; Experiential Design</h3><p>Taking design off the screen and into the real world, turning ordinary spaces into something people can experience.</p></div>
       </div>
     </div>
   </section>
 
   <div class="wrap">
     <section class="archive" id="archive">
-      <div class="shead"><h2><span class="mono">03</span>Archive</h2><span class="dim">Badges, marks, illustration and motion</span></div>
+      <div class="shead"><h2>Archive</h2></div>
       <div class="tiles">
         <button class="tile" type="button" aria-label="Enlarge Illustrated Icons"><div class="frame"><img src="assets/c/icons.jpg" alt="Illustrated Icons" loading="lazy"></div><span class="t">Illustrated Icons</span><span class="mono">Icons</span></button>
         <button class="tile" type="button" aria-label="Enlarge Platinum Creative Running Club 5K"><div class="frame"><img src="assets/c/running-club.jpg" alt="Platinum Creative Running Club 5K" loading="lazy"></div><span class="t">Platinum Creative Running Club 5K</span><span class="mono">Illustration</span></button>
@@ -387,7 +386,7 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
     </section>
 
     <section class="about" id="about">
-      <div class="shead"><h2><span class="mono">04</span>About</h2><a class="btn" href="Austin_Remer_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a></div>
+      <div class="shead"><h2>About</h2><a class="btn" href="Austin_Remer_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a></div>
       <div class="aboutgrid">
         <div class="portrait"><img src="assets/c/portrait.jpg" alt="Portrait of Austin Remer in a black T-shirt" loading="lazy"></div>
         <div class="copy">
@@ -405,11 +404,11 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
     </section>
 
     <section class="hobbies" id="hobbies">
-      <div class="shead"><h2><span class="mono">05</span>Off the clock</h2><span class="dim">Hobbies</span></div>
+      <div class="shead"><h2>Off the clock</h2></div>
       <p class="hlead">I like picking projects I don’t know how to do yet, usually ones that are a bit too advanced, and figuring them out along the way.</p>
       <a class="hob" href="mysterium-keyboard.html">
         <div class="copy">
-          <span class="mono dim">2022 · Personal build</span>
+          <span class="mono dim">Personal build, 2022</span>
           <h3>Mysterium keyboard</h3>
           <p>I started with the PCB design files and a parts list. I ordered the boards from a manufacturer in China, sourced every component myself, and taught myself KiCad to add my logo to the bottom plate. Then I learned to solder. There was a lot of soldering.</p>
           <span class="go mono">See the build ↗</span>
@@ -419,7 +418,7 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
     </section>
 
     <section class="clients" aria-labelledby="clients-h">
-      <div class="shead"><h2 id="clients-h"><span class="mono">06</span>Who I've worked with</h2><span class="dim">In-house and freelance</span></div>
+      <div class="shead"><h2 id="clients-h">Who I've worked with</h2></div>
       <div class="rows">
         <div class="rowi"><span>Full Sail University (in-house)</span><span>Hall of Game, Armada Esports, Hall of Fame Week</span><span class="mono dim">2012–2026</span></div>
         <div class="rowi"><span>NACE, National Association of Collegiate Esports</span><span>Live event graphics</span><span class="mono dim">2024–2026</span></div>
@@ -429,7 +428,7 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
     </section>
 
     <section class="contact" id="contact">
-      <div class="shead"><h2><span class="mono">07</span>Contact</h2><span class="dim">Orlando, FL, working anywhere</span></div>
+      <div class="shead"><h2>Contact</h2></div>
       <p class="big">Let's work together.</p>
       <div class="mail">
         <a href="mailto:austin.remer@gmail.com">austin.remer@gmail.com</a>
@@ -540,7 +539,7 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
       var m=t.querySelector('video,img'); var z=document.createElement('div'); z.className='zoom'; z.setAttribute('role','dialog'); z.setAttribute('aria-label',t.querySelector('.t').textContent);
       var el; if(m.tagName==='VIDEO'){ el=document.createElement('video'); el.src=m.currentSrc||m.src; el.muted=true; el.loop=true; el.autoplay=true; el.setAttribute('playsinline',''); } else { el=document.createElement('img'); el.src=m.currentSrc||m.src; el.alt=m.alt; }
       var bar=document.createElement('div'); bar.className='zbar';
-      var cap=document.createElement('span'); cap.className='mono dim'; cap.textContent=t.querySelector('.t').textContent+' · '+t.querySelector('.mono').textContent;
+      var cap=document.createElement('span'); cap.className='mono dim'; cap.textContent=t.querySelector('.t').textContent;
       var x=document.createElement('button'); x.type='button'; x.className='mono'; x.textContent='Close ✕';
       bar.appendChild(cap); bar.appendChild(x); z.appendChild(bar); z.appendChild(el);
       z.addEventListener('click', closeZoom); document.body.appendChild(z); document.documentElement.style.overflow='hidden';
