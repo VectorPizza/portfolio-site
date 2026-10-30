@@ -236,6 +236,7 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
   .rowi{grid-template-columns:1fr}
   .rowi span:last-child{text-align:left}
   .top .role{display:none}
+  .spec dd br{display:none}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.frame img,.frame video{transition:none}}
 </style>
@@ -252,7 +253,6 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-    <span class="status mono"><span class="led" aria-hidden="true"></span>Open to art director roles</span>
   </div>
 </header>
 
@@ -263,7 +263,6 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
     <canvas class="stage-ascii" aria-hidden="true"></canvas>
     <div class="wrap stage-in">
     <div class="cal" aria-hidden="true">
-      <span class="steps"><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i><i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i><i class="o" style="--n:11"></i></span>
       <span class="line"></span>
       <span class="mono dim">Selected work 2017–2026</span>
     </div>
@@ -271,10 +270,10 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
     <div class="hero">
       <h1>Building more than brands.</h1>
       <dl class="spec">
-        <dt class="mono">Based</dt><dd>Orlando, FL, working anywhere</dd>
+        <dt class="mono">Based</dt><dd>Orlando, FL</dd>
         <dt class="mono">In-house</dt><dd>Full Sail University, 2012–2026</dd>
         <dt class="mono">Last role</dt><dd>Senior Designer, Platinum Creative</dd>
-        <dt class="mono">Work</dt><dd>Identity systems, events, environments, illustration and motion</dd>
+        <dt class="mono">Work</dt><dd>Identity systems, events, environments, <br>illustration and motion</dd>
       </dl>
     </div>
     <a class="stage-tag mono" href="hall-of-game-paragon.html"><span class="dim">Background</span> Hall of Game: Paragon key art ↗</a>
@@ -313,9 +312,9 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
           <div class="meta"><div class="row"><h3><span class="no">04</span>Full Sail Armada</h3><span class="mono">2018–2026</span></div><span class="mono">Full Sail · Brand identity, redesigned each season · Created the brand</span></div>
         </a>
 
-        <a class="card w3" href="nasa-schematic-illustrations.html">
-          <div class="frame light contain"><img src="assets/c/nasa-lm.jpg" alt="Line schematic illustration of the Apollo lunar module" loading="lazy"></div>
-          <div class="meta"><div class="row"><h3><span class="no">05</span>NASA Schematic Illustrations</h3><span class="mono">2025–2026</span></div><span class="mono">Personal · Technical illustration series</span></div>
+        <a class="card w3" href="vector-pizza.html">
+          <div class="frame light vp"><img src="assets/c/vp-logo.png" alt="Vector Pizza logo: a pizza slice in a scalloped orange seal" loading="lazy"></div>
+          <div class="meta"><div class="row"><h3><span class="no">05</span>Vector Pizza</h3><span class="mono">2017</span></div><span class="mono">Personal brand · Stickers, pins, patches</span></div>
         </a>
         <a class="card w3" href="stellar.html">
           <div class="frame"><img src="assets/c/stellar.jpg" alt="Stellar logotype in spaced white capitals over a dark starfield" loading="lazy"></div>
@@ -334,9 +333,9 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
           <div class="frame quad" role="img" aria-label="Four logos: Code Orlando, Florida Esports Summit, NACE Spring Grand Finals and Full Sail Dream Lofts"><img src="assets/c/logo-code.jpg" alt="" loading="lazy"><img src="assets/c/logo-fes.jpg" alt="" loading="lazy"><img src="assets/c/logo-nace.jpg" alt="" loading="lazy"><img src="assets/c/logo-lofts.jpg" alt="" loading="lazy"></div>
           <div class="meta"><div class="row"><h3><span class="no">09</span>Logos and Marks</h3><span class="mono">Various</span></div><span class="mono">Events, programs, places · Identity</span></div>
         </a>
-        <a class="card" href="vector-pizza.html">
-          <div class="frame light vp"><img src="assets/c/vp-logo.png" alt="Vector Pizza logo: a pizza slice in a scalloped orange seal" loading="lazy"></div>
-          <div class="meta"><div class="row"><h3><span class="no">10</span>Vector Pizza</h3><span class="mono">2017</span></div><span class="mono">Personal brand · Stickers, pins, patches</span></div>
+        <a class="card" href="nasa-schematic-illustrations.html">
+          <div class="frame light contain"><img src="assets/c/nasa-lm.jpg" alt="Line schematic illustration of the Apollo lunar module" loading="lazy"></div>
+          <div class="meta"><div class="row"><h3><span class="no">10</span>NASA Schematic Illustrations</h3><span class="mono">2025–2026</span></div><span class="mono">Personal · Technical illustration series</span></div>
         </a>
         <a class="card" href="purdue-space-patch.html">
           <div class="frame"><img src="assets/c/purdue.jpg" alt="The Purdue Cradle of Astronauts patch with the Perseverance rover, next to a Mars 2020 T-shirt" loading="lazy"></div>
@@ -437,7 +436,6 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
         <button class="btn" type="button" id="copy-mail">Copy email</button>
       </div>
       <footer class="foot">
-        <div class="cal" aria-hidden="true" style="padding:0"><span class="steps"><i style="--n:2"></i><i style="--n:4"></i><i style="--n:6"></i><i style="--n:8"></i><i class="o" style="--n:10"></i></span></div>
         <span class="mono dim">© 2026 Austin Remer<span id="visits" aria-hidden="true" style="margin-left:14px;color:#1a1917;user-select:text">Visits: …</span></span><script>fetch("https://arportfolio.goatcounter.com/counter/TOTAL.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){document.getElementById("visits").textContent="Visits: "+d.count}).catch(function(){})</script>
         <nav aria-label="Elsewhere"><a href="https://dribbble.com/aremer" target="_blank" rel="noopener">Dribbble ↗</a><a href="https://www.linkedin.com/in/austinremer/" target="_blank" rel="noopener">LinkedIn ↗</a></nav>
         <a href="#top">Back to top ↑</a>
