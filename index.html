@@ -177,6 +177,19 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 .hob:hover .frame{border-color:var(--signal)}
 .hob:hover .frame img{transform:scale(1.025)}
 .hob:hover .go{color:var(--signal)}
+.feature{position:relative;display:block;margin-top:clamp(40px,5vw,64px);overflow:hidden;background:var(--panel);border:1px solid var(--rule);text-decoration:none;transition:border-color .25s ease}
+.feature img{width:100%;aspect-ratio:21/9;object-fit:cover;transition:transform .8s cubic-bezier(.19,1,.22,1)}
+.feature .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,25,23,0) 30%,rgba(26,25,23,.55) 62%,rgba(26,25,23,.94) 100%)}
+.feature .fcopy{position:absolute;left:0;right:0;bottom:0;padding:clamp(20px,3vw,44px);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 48px}
+.feature h3{margin:0;font-size:clamp(36px,4.6vw,68px);font-weight:400;line-height:1;letter-spacing:-.045em;color:var(--paper)}
+.feature p{margin:14px 0 0;max-width:46ch;font-size:16px;line-height:1.45;color:var(--alu)}
+.feature .fmeta{display:block;margin-top:12px;font-size:14px;color:var(--dim)}
+.feature .fgo{flex:none;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border:1px solid var(--alu);background:none;color:var(--alu);font-size:15px;transition:background .2s,color .2s}
+.feature:hover{border-color:var(--signal)}
+.feature:hover img{transform:scale(1.025)}
+.feature:hover .fgo{background:var(--alu);color:var(--chassis)}
+@media (max-width:760px){.feature img{aspect-ratio:4/5;object-position:38% 50%}.feature .shade{background:linear-gradient(180deg,rgba(26,25,23,0) 25%,rgba(26,25,23,.7) 55%,rgba(26,25,23,.96) 100%)}}
+
 
 /* about */
 .about{padding-bottom:clamp(88px,10vw,140px)}
@@ -408,14 +421,17 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
     <section class="hobbies" id="hobbies">
       <div class="shead"><h2>Off the clock</h2></div>
       <p class="hlead">I like picking projects I don’t know how to do yet, usually ones that are a bit too advanced, and figuring them out along the way.</p>
-      <a class="hob" href="mysterium-keyboard.html">
-        <div class="copy">
-          <span class="mono dim">Personal build, 2022</span>
-          <h3>Mysterium keyboard</h3>
-          <p>I started with the PCB design files and a parts list. I ordered the boards from a manufacturer in China, sourced every component myself, and taught myself KiCad to add my logo to the bottom plate. Then I learned to solder. There was a lot of soldering.</p>
-          <span class="go mono">See the build ↗</span>
+      <a class="feature" href="mysterium-keyboard.html">
+        <img src="assets/c/keyboard.jpg" alt="The finished Mysterium keyboard, black keycaps with green Esc and Enter, on a grid desk mat" loading="lazy">
+        <div class="shade"></div>
+        <div class="fcopy">
+          <div>
+            <h3>Mysterium keyboard</h3>
+            <p>I started with the PCB files and a parts list, sourced every component, taught myself KiCad and learned to solder.</p>
+            <span class="fmeta">Personal build, 2022</span>
+          </div>
+          <span class="fgo">See the build ↗</span>
         </div>
-        <div class="frame"><img src="assets/c/keyboard.jpg" alt="The finished Mysterium keyboard, black keycaps with green Esc and Enter, on a grid desk mat" loading="lazy"></div>
       </a>
     </section>
 
