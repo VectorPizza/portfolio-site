@@ -534,7 +534,7 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
   if (mm && (mm('(prefers-reduced-motion: reduce)').matches || !mm('(hover: hover) and (pointer: fine)').matches)) return;
   var gl = glc.getContext('webgl2', {alpha:false, antialias:false, premultipliedAlpha:false});
   if (!gl) return;
-  var PR = {warpRadius:0.198, warpAmt:0.05, split:0.22, warpDiss:0.95, trailRadius:0.05, trailAmt:0.4, trailDecay:0.984, drift:0.0011, hue:0.25};
+  var PR = {warpRadius:0.1084, warpAmt:0.03, split:0.6, warpDiss:0.9669, trailRadius:0.0185, trailAmt:0.4, trailDecay:0.98375, drift:0.0004, hue:0.07};
   var poster = new Image(); poster.src = vid.getAttribute('poster');
   var half = !!gl.getExtension('EXT_color_buffer_float');
   var VS = '#version 300 es\nout vec2 uv;void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);uv=p;gl_Position=vec4(p*2.0-1.0,0.0,1.0);}';
