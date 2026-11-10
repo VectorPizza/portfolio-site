@@ -223,6 +223,18 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 .foot a{text-decoration:none;padding:10px 0}
 .foot a:hover{color:var(--paper)}
 
+/* phones and tablets: headline over the art, details below it */
+@media (max-width:1000px){
+  .stage{--art-h:min(118vw,70svh);min-height:0;background:var(--chassis)}
+  .stage-bg,.stage-fx,.stage-shade{inset:0 0 auto 0;height:var(--art-h)}
+  .stage-shade{background:linear-gradient(to top,var(--chassis) 0%,color-mix(in oklab,var(--chassis) 72%,transparent) 15%,transparent 44%)}
+  .stage .cal{display:none}
+  .stage-in{display:grid;grid-template-rows:var(--art-h) auto auto}
+  .stage .hero{display:contents}
+  .stage .hero h1{grid-row:1;align-self:end;padding-bottom:20px}
+  .stage .spec{grid-row:2;margin-top:6px}
+  .stage-tag{grid-row:3;justify-self:start;align-self:start}
+}
 @media (max-width:1000px){
   .hero{grid-template-columns:1fr}
   .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -540,7 +552,7 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
   function clr(pr, v){ [pr.a, pr.b].forEach(function(x){ gl.bindFramebuffer(gl.FRAMEBUFFER, x.f); gl.viewport(0, 0, x.w, x.h); gl.clearColor(v, v, v, 1); gl.clear(gl.COLOR_BUFFER_BIT); }); gl.bindFramebuffer(gl.FRAMEBUFFER, null); }
   var img = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, img); param();
   var W = 1, H = 1, DPR = Math.min(window.devicePixelRatio || 1, 1.5), flow, dye, enc = 0, src = null, posterDone = false, shown = false, hue = 0;
-  function resize(){ W = stage.clientWidth; H = stage.clientHeight; glc.width = Math.max(2, Math.round(W * DPR)); glc.height = Math.max(2, Math.round(H * DPR));
+  function resize(){ W = glc.clientWidth || stage.clientWidth; H = glc.clientHeight || stage.clientHeight; glc.width = Math.max(2, Math.round(W * DPR)); glc.height = Math.max(2, Math.round(H * DPR));
     var fw = 192, fh = Math.max(64, Math.round(fw * H / W)), dw = 420, dh = Math.max(140, Math.round(dw * H / W));
     flow = pair(fw, fh); enc = half ? 0 : 1; clr(flow, half ? 0 : 0.5); dye = pair(dw, dh); clr(dye, 0); }
   function upload(){
@@ -567,7 +579,7 @@ button.tile:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
   function wake(){ if (!raf) raf = requestAnimationFrame(frame); }
   stage.addEventListener('pointermove', function(e){
     if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
-    var b = stage.getBoundingClientRect(); M.x = e.clientX - b.left; M.y = e.clientY - b.top;
+    var b = glc.getBoundingClientRect(); M.x = e.clientX - b.left; M.y = e.clientY - b.top;
     if (!M.in || M.fresh){ M.px = M.x; M.py = M.y; M.fresh = false; }
     M.in = true; activeUntil = performance.now() + 4500; wake();
   });
