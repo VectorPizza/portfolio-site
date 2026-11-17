@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Totl — Austin Remer</title>
+<meta name="description" content="Totl is a browser extension that shows the price with sales tax while you shop. Brand, UX and interface case study by Austin Remer.">
+<meta property="og:title" content="Totl — Austin Remer">
+<meta property="og:description" content="Totl is a browser extension that shows the price with sales tax while you shop. Brand, UX and interface case study by Austin Remer.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://austinremer.com/totl.html">
+<meta property="og:image" content="https://austinremer.com/assets/868f838a37c571f33ea0e57ef53c3486.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a2a2a'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial,sans-serif' font-size='16' fill='%23efeee9' text-anchor='middle'%3EAR%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&amp;family=Geist+Mono:wght@400;500&amp;family=Albert+Sans:wght@400;500&amp;family=Schibsted+Grotesk:wght@400;500&amp;family=Onest:wght@500;600;800&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#1a1917}
+a{color:#d4d2cc}a:hover{color:#eeede9}
+a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.ul-link{text-decoration:none}
+.ul-link:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.next:hover .next-title{text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:1px}
+/* chassis theme */
+html{background:#1a1917;color-scheme:dark}
+::selection{background:#f06a26;color:#1a1917}
+#top h1,#top h2,#top h3,#top .next-title{color:#eeede9}
+#top dt{font-size:14px!important}
+#top footer{font-size:14px!important}
+#top footer a:hover{color:#eeede9!important}
+.chtop{position:sticky;top:0;z-index:20;background:color-mix(in oklab,#1a1917 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #3a3832}
+.chtop-in{max-width:1440px;margin:0 auto;padding:0 clamp(16px,2.4vw,36px);box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 28px;min-height:56px;font-size:17px;line-height:1.4;letter-spacing:-.01em;color:#d4d2cc}
+.chtop a{text-decoration:none;color:#d4d2cc}
+.chtop a:hover{color:#eeede9}
+.chtop nav{display:flex;flex-wrap:wrap;gap:0 22px}
+.chtop nav a,.chtop .name{padding:12px 0}
+.chtop .role{color:#8f8c84}
+.chtop .status{display:flex;align-items:center;gap:9px;font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.chtop .led{width:8px;height:8px;border-radius:50%;background:#f06a26;box-shadow:0 0 0 3px color-mix(in oklab,#f06a26 22%,transparent)}
+@media (max-width:640px){.chtop .role{display:none}}
+
+/* ---- Totl components (his design) ---- */
+:root {
+  --page: #f4f5f8;
+  --card: #ffffff;
+  --ink: #10162b;
+  --body: #5a6275;
+  --muted: #8a91a3;
+  --line: #e4e7ee;
+  --well: #eceef3;
+  --blue: #1a72ff;
+  --panel: #10162b;
+  --display: "Onest", "Arial Black", Arial, sans-serif;
+  --ui: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+
+
+/* Scaled stages */
+.stage { position: relative; width: 100%; overflow: hidden; }
+.stage > .in { position: absolute; left: 0; top: 0; transform-origin: 0 0; transform: scale(var(--s, 1)); }
+.hero { aspect-ratio: 1360 / 1000; }
+.hero > .in { width: 1360px; height: 1000px; }
+
+.rings { position: absolute; left: 680px; top: 1010px; }
+.rings i { position: absolute; border: 1.5px solid var(--line); border-radius: 50%; transform: translate(-50%, -50%); }
+.h1 { position: absolute; left: 0; right: 0; top: 70px; margin: 0; text-align: center; font: 800 120px/1 var(--display); letter-spacing: -.04em; color: var(--ink); }
+.h1 span { display: block; }
+
+.sphere { position: absolute; border-radius: 50%; }
+.sp1 { left: 120px; top: 330px; width: 96px; height: 96px; background: radial-gradient(circle at 34% 30%, #ffffff 0 18%, #e3e8f2 60%, #c9d2e3 100%); box-shadow: 0 20px 40px rgba(16, 22, 43, .08); }
+.sp2 { left: 96px; top: 860px; width: 46px; height: 46px; background: radial-gradient(circle at 34% 30%, #7fb0ff 0 10%, #1a72ff 60%, #0b4fd6 100%); box-shadow: 0 12px 24px rgba(26, 114, 255, .3); }
+.sp3 { left: 1232px; top: 520px; width: 30px; height: 30px; background: radial-gradient(circle at 34% 30%, #ffffff 0 12%, #c9dcff 70%, #9cc0ff 100%); }
+
+/* Browser window */
+.win { position: absolute; left: 190px; top: 352px; width: 980px; height: 720px; border-radius: 18px 18px 0 0; background: #fff; overflow: hidden; box-shadow: 0 0 0 1px rgba(16, 22, 43, .08), 0 50px 100px -20px rgba(16, 35, 90, .25); color: #1f1f1c; }
+.tabs { display: flex; align-items: flex-end; height: 46px; padding: 0 14px; background: #e8ebf0; gap: 10px; }
+.dots { display: flex; gap: 8px; align-self: center; margin-right: 10px; }
+.dots i { width: 12px; height: 12px; border-radius: 50%; background: #cfd4dd; }
+.tab { display: flex; align-items: center; gap: 10px; width: 250px; height: 36px; padding: 0 14px; border-radius: 10px 10px 0 0; background: #fff; font: 500 14px/1 var(--ui); color: #3a3f4b; }
+.tab .fav { width: 16px; height: 16px; border-radius: 4px; background: #1f1f1c; color: #fbf9f4; font: 700 10px/16px Georgia, serif; text-align: center; }
+.bar { display: flex; align-items: center; gap: 14px; height: 56px; padding: 0 16px; border-bottom: 1px solid #eceef2; }
+.bar svg { width: 20px; height: 20px; fill: none; stroke: #5f6675; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.addr { flex: 1; display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 16px; border-radius: 999px; background: #f1f3f6; font: 400 15px/1 var(--ui); color: #3a3f4b; }
+.addr svg { width: 15px; height: 15px; }
+.ext { position: relative; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: rgba(26, 114, 255, .12); }
+.ext svg { width: 18px; height: 18px; fill: #1a72ff; stroke: none; }
+.avatar { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, #c9d6ee, #8fa6d1); }
+
+.shop { position: absolute; left: 0; top: 102px; right: 0; bottom: 0; background: #fbf9f4; }
+.shop .nav { display: flex; justify-content: space-between; align-items: center; height: 64px; padding: 0 40px; border-bottom: 1px solid #ebe6da; font: 600 12px/1 Georgia, serif; letter-spacing: .22em; text-transform: uppercase; color: #6b675d; }
+.shop .nav b { font: 700 18px/1 Georgia, serif; letter-spacing: .14em; color: #1f1f1c; }
+.pd { position: absolute; left: 40px; top: 104px; width: 400px; height: 400px; border-radius: 14px; background: #fff; display: grid; place-items: center; }
+.pd img { width: 82%; height: auto; }
+.pi { position: absolute; left: 470px; top: 116px; width: 170px; }
+.pi .k { font: 600 11px/1 Georgia, serif; letter-spacing: .2em; text-transform: uppercase; color: #6b675d; }
+.pi h3 { margin: 14px 0 0; font: 700 26px/1.1 Georgia, serif; }
+.pi .pr { margin-top: 16px; font: 400 30px/1 Georgia, serif; }
+.wt { display: inline-block; margin-top: 8px; font: 500 16px/1.35 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #1a72ff; white-space: nowrap; }
+.wt b { font-size: 21px; font-weight: 700; }
+.sz { display: flex; gap: 8px; margin-top: 26px; }
+.sz i { display: grid; place-items: center; width: 36px; height: 38px; border-radius: 6px; border: 1px solid #ddd6c7; font: 400 14px/1 Georgia, serif; font-style: normal; }
+.sz i.on { background: #1f1f1c; border-color: #1f1f1c; color: #fff; }
+.add { margin-top: 22px; display: grid; place-items: center; height: 48px; border-radius: 6px; background: #1f1f1c; color: #fff; font: 600 15px/1 var(--ui); }
+.pop { position: absolute; right: 22px; top: 110px; width: 320px; filter: drop-shadow(0 0 1px rgba(16, 22, 43, .18)) drop-shadow(0 24px 40px rgba(16, 35, 90, .22)); }
+.pop img { display: block; width: 100%; height: auto; }
+
+
+/* Collage */
+.collage { aspect-ratio: 1360 / 940; background: linear-gradient(160deg, #e4eaf5, #d9e1ef); }
+.collage > .in { width: 1360px; height: 940px; }
+.col { position: absolute; top: 0; width: 320px; display: grid; gap: 30px; }
+.col img { display: block; width: 320px; height: auto; filter: drop-shadow(0 24px 34px rgba(16, 35, 90, .16)); }
+
+/* Video + plates */
+.film { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #fff; }
+.film video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ctl { position: absolute; right: 16px; bottom: 16px; display: grid; place-items: center; width: 42px; height: 42px; border: 0; border-radius: 50%; background: rgba(16, 22, 43, .55); color: #fff; cursor: pointer; }
+.ctl:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.ctl svg { width: 16px; height: 16px; fill: currentColor; }
+.ctl .i-play { display: none; }
+.ctl[aria-pressed="true"] .i-play { display: block; }
+.ctl[aria-pressed="true"] .i-pause { display: none; }
+
+
+/* ---------- Work sections: text and graphics sit on the page, cards like Scope of work ---------- */
+
+
+
+
+.pts { display: grid; gap: 24px; grid-template-columns: 1fr; max-width: 1120px; margin-left: auto; margin-right: auto; padding: 0; list-style: none; }
+@media (min-width: 760px) { .pts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; } }
+.pts li { text-align: center; }
+.pts b { display: block; font: 700 19px/1.25 var(--ui); color: var(--ink); }
+.pts span { display: block; margin-top: 6px; font-size: 17px; line-height: 1.45; color: var(--body); }
+.pts .n { font: 800 clamp(34px, 4vw, 48px)/1 var(--display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.pts + .cut, .cut + .pts, .pan + .pts, .pts + .card, .pts + .iconrow { margin-top: 44px; }
+/* Wide diagrams keep a readable size on phones and scroll sideways inside their own strip. */
+@media (max-width: 760px) { .pan { overflow-x: auto; margin-left: -16px; margin-right: -16px; padding: 4px 16px 12px; -webkit-overflow-scrolling: touch; } .pan .cut { width: 820px; max-width: none !important; } }
+.facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin: 28px auto 0; padding: 0; list-style: none; font: 600 16px/1.2 var(--ui); color: var(--ink); }
+.facts li { display: flex; align-items: center; gap: 8px; }
+.facts svg { width: 18px; height: 18px; fill: none; stroke: var(--blue); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.cut { display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto; }
+.card { border-radius: 28px; background: var(--card); }
+.cap { font: 600 13px/1.3 var(--ui); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.wm { font-family: var(--display); font-weight: 800; letter-spacing: .02em; line-height: 1; color: var(--ink); }
+
+/* Popup rows */
+.shots { display: grid; grid-template-columns: repeat(2, minmax(0, 320px)); justify-content: center; align-items: start; gap: 28px 20px; }
+@media (min-width: 900px) { .shots { grid-template-columns: repeat(4, minmax(0, 320px)); gap: 28px; } .shots.stag figure:nth-child(even) { margin-top: 44px; } }
+.shots figure { margin: 0; container-type: inline-size; }
+.shots img.pp { display: block; width: 100%; height: auto; border-radius: 26px; border-radius: 8.1cqw; filter: drop-shadow(0 24px 34px rgba(16, 35, 90, .14)); }
+.shots figcaption { margin-top: 18px; text-align: center; }
+.shots.lab figcaption { font: 700 18px/1.2 var(--ui); letter-spacing: 0; text-transform: none; color: var(--ink); }
+.shots.dk img.pp { filter: drop-shadow(0 24px 34px rgba(16, 22, 43, .28)); }
+.pcard { position: relative; padding: 8% 8% 9%; border-radius: 14px; background: #26231f; color: #ffffff; box-shadow: 0 0 0 1px rgba(15, 20, 40, .06), 0 24px 50px rgba(15, 35, 90, .12); }
+.pcard .pshop { font: 600 11px/1 Georgia, serif; letter-spacing: .2em; text-transform: uppercase; color: #a8a297; }
+.pcard .ph { margin: 16px 0; aspect-ratio: 1.6; border-radius: 10px; background: #fff; display: grid; place-items: center; overflow: hidden; }
+.pcard .ph img { width: 62%; height: auto; }
+.pcard .nm { font: 700 clamp(15px, 1.6vw, 22px)/1.15 Georgia, serif; }
+.pcard .pr { margin-top: 8px; font: 400 clamp(17px, 1.8vw, 26px)/1 Georgia, serif; }
+.pcard .wt { display: inline-block; margin-top: 6px; font: 500 clamp(11px, 1.1vw, 15px)/1.35 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #1a72ff; white-space: nowrap; }
+.pcard .wt b { font-size: 1.27em; font-weight: 700; }
+.pcard .cart { margin-top: 22px; display: grid; place-items: center; height: 42px; border-radius: 6px; background: #ffffff; color: #26231f; font: 600 14px/1 var(--ui); }
+
+.legend { display: grid; justify-items: center; gap: 14px; margin-top: 40px; }
+.lsw { display: grid; grid-template-columns: repeat(7, minmax(0, 64px)); gap: 6px; font: 600 13px/1 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
+.lsw span { display: grid; gap: 8px; }
+.lsw i { display: block; height: 16px; border-radius: 5px; background: var(--c); }
+.lsw i.none { box-shadow: inset 0 0 0 1.5px #cdd5e3; }
+
+/* Colors */
+.swatches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (min-width: 700px) { .swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
+@media (min-width: 1100px) { .swatches { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.swatch { padding: 12px 12px 24px; }
+.swatch i { display: block; aspect-ratio: 1 / 1.05; border-radius: 18px; background: var(--c); }
+.swatch i.edge { box-shadow: inset 0 0 0 1.5px var(--line); }
+.swatch b { display: block; margin: 20px 10px 0; font: 700 20px/1.2 var(--ui); }
+.swatch code { display: block; margin: 6px 10px 0; font: 600 15px/1.2 var(--ui); letter-spacing: .04em; color: var(--body); }
+.swatch span { display: block; margin: 8px 10px 0; font-size: 15px; line-height: 1.4; color: var(--muted); }
+.gradbar { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; min-height: 64px; padding: 0 28px; border-radius: 22px; background: linear-gradient(90deg, #3d8bff, #1a72ff 55%, #0b4fd6); font: 700 13px/1 var(--ui); letter-spacing: .12em; text-transform: uppercase; color: #fff; }
+
+/* Interface colors */
+.roles { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 900px) { .roles { grid-template-columns: 1fr 1fr; } }
+.rolecard { padding: 32px 32px 14px; }
+.rolecard.dk { background: #10162b; color: #fff; }
+.rolecard h3 { margin: 0 0 20px; font: 700 22px/1.2 var(--ui); }
+.rrow { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
+.dk .rrow { border-top-color: rgba(255, 255, 255, .1); }
+.rrow i { height: 40px; border-radius: 12px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(16, 22, 43, .1); }
+.dk .rrow i { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18); }
+.rrow b { display: block; font: 700 17px/1.2 var(--ui); }
+.rrow span { display: block; margin-top: 3px; font-size: 15px; line-height: 1.3; color: var(--muted); }
+.dk .rrow span { color: #b7bcc8; }
+.rrow code { font: 600 15px/1 var(--ui); letter-spacing: .04em; color: var(--body); }
+.dk .rrow code { color: #fff; }
+
+/* Type scale */
+.tscale { padding: 14px clamp(20px, 3vw, 40px); max-width: 1000px; margin-left: auto; margin-right: auto; }
+.trow { display: grid; grid-template-columns: 1fr; gap: 6px; align-items: center; padding: 18px 0; border-top: 1px solid var(--line); }
+.trow:first-child { border-top: 0; }
+@media (min-width: 700px) { .trow { grid-template-columns: 170px 210px minmax(0, 1fr); gap: 20px; } }
+.trow .role { font: 700 17px/1.2 var(--ui); }
+.trow .spec { font: 400 15px/1.2 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
+.trow .smp { font-family: var(--ui); line-height: 1.1; color: #10162b; }
+
+/* Typefaces */
+.faces { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 900px) { .faces { grid-template-columns: 1fr 1fr; } }
+.face { display: flex; flex-direction: column; padding: clamp(26px, 3vw, 40px); min-height: 380px; }
+.face h3 { margin: 12px 0 0; font: 700 clamp(28px, 3vw, 40px)/1 var(--ui); }
+.face.d h3 { font-family: var(--display); font-weight: 800; letter-spacing: -.02em; }
+.face .spec1 { margin-top: 36px; color: var(--blue); font: 700 clamp(52px, 6.4vw, 92px)/1 var(--ui); letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.face .spec1 small { font-size: .41em; font-weight: 600; letter-spacing: 0; }
+.face .spec2 { margin-top: 32px; color: var(--blue); font: 800 clamp(44px, 5.6vw, 82px)/.95 var(--display); letter-spacing: -.04em; }
+.face .ft { margin-top: auto; padding-top: 32px; display: flex; flex-wrap: wrap; gap: 8px 32px; font: 18px/1 var(--ui); }
+.face .ft i { margin-left: 8px; font-style: normal; font-weight: 400; color: var(--muted); }
+.face .num { margin-top: auto; padding-top: 32px; font: 600 clamp(20px, 2.2vw, 30px)/1 var(--ui); letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+
+/* Brand */
+.duo { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 760px) { .duo { grid-template-columns: 1fr 1fr; } }
+.duo .card { display: grid; place-items: center; min-height: clamp(240px, 30vw, 400px); padding: 32px; }
+.lock { display: flex; align-items: center; gap: .3em; font-size: clamp(44px, 6vw, 72px); }
+.lock svg { width: 1.16em; height: 1.16em; flex: none; }
+.lock .wm { font-size: 1em; }
+.bigmark { width: min(300px, 56%); height: auto; aspect-ratio: 1; fill: var(--blue); }
+.gridcard { display: grid; place-items: center; padding: clamp(28px, 5vw, 64px); }
+.iconrow { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 900px) { .iconrow { grid-template-columns: 1.25fr 1fr; } }
+.iconrow > .card { display: grid; place-items: center; padding: clamp(28px, 4vw, 56px); }
+.sizes { display: grid; gap: 24px; }
+.sizes .card { display: flex; align-items: center; gap: 24px; padding: 20px; }
+.sizes .well { display: grid; place-items: center; flex: none; width: 156px; height: 156px; border-radius: 20px; background: var(--page); }
+.sizes b { display: block; font: 700 22px/1.2 var(--ui); }
+.sizes span { display: block; margin-top: 4px; font-size: 17px; color: var(--muted); }
+@media (max-width: 500px) { .sizes .well { width: 96px; height: 96px; } .sizes .well svg.x128 { width: 84px; height: 84px; } }
+.lockups { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 640px) { .lockups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .lockups { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.lu { position: relative; display: grid; place-items: center; min-height: 260px; padding: 40px 24px 64px; }
+.lu.blue { background: linear-gradient(135deg, #3d8bff, #1a72ff 55%, #0b4fd6); }
+.lu.ink { background: #10162b; }
+.lu .cap { position: absolute; left: 26px; bottom: 22px; }
+.lu.blue .cap, .lu.ink .cap { color: rgba(255, 255, 255, .72); }
+.lu.blue .wm, .lu.ink .wm { color: #fff; }
+.lk { display: flex; align-items: center; gap: 16px; }
+.lk .wm { font-size: 46px; }
+.lk.sm { gap: 10px; } .lk.sm .wm { font-size: 34px; }
+.stack { display: grid; justify-items: center; gap: 14px; } .stack .wm { font-size: 38px; }
+.clearbox { position: relative; padding: 26px; outline: 2px dashed rgba(210, 60, 60, .55); outline-offset: -1px; background: repeating-linear-gradient(45deg, rgba(210, 60, 60, .07) 0 6px, transparent 6px 12px); }
+.clearbox .lk { background: #fff; }
+.clearbox em { position: absolute; top: 4px; left: 8px; font: 700 13px/1 var(--ui); font-style: normal; color: #d92d3a; }
+.usage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; }
+@media (min-width: 900px) { .usage { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 24px; } }
+.use .card { display: grid; place-items: center; aspect-ratio: 16 / 10; overflow: hidden; }
+.use .card svg { max-width: 60%; }
+.use .card.blue { background: linear-gradient(135deg, #3d8bff, #1a72ff 55%, #0b4fd6); }
+.use .card.ink { background: #10162b; }
+.use .card.photo { background: radial-gradient(circle at 30% 30%, #f2b36b, transparent 40%), radial-gradient(circle at 70% 60%, #3d6b4f, transparent 45%), radial-gradient(circle at 40% 80%, #c95a3f, transparent 40%), linear-gradient(135deg, #7d8f6a, #2f3d33); }
+.use p { display: flex; gap: 10px; margin: 16px 4px 0; font-size: 16px; line-height: 1.4; color: var(--body); }
+.use p i { flex: none; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; font: 700 12px/1 var(--ui); font-style: normal; color: #fff; background: #14855a; }
+.use p i.no { background: #d92d3a; }
+
+/* Store theme: Charcoal (agreed 2026-11-16, replaced Forest). The Trailhead Outfitters site in the hero window. */
+.tab .fav { background: #26231f; color: #ffffff; }
+.shop { background: #26231f; color: #ffffff; }
+.shop .nav { border-bottom-color: rgba(255, 255, 255, .16); color: #a8a297; }
+.shop .nav b { color: #ffffff; }
+.pi .k { color: #a8a297; }
+.sz i { border-color: rgba(255, 255, 255, .32); }
+.sz i.on { background: #ffffff; border-color: #ffffff; color: #26231f; }
+.add { background: #ffffff; color: #26231f; }
+
+/* Closing */
+.closing { display: grid; justify-items: center; padding: clamp(72px, 11vw, 160px) 24px; background: linear-gradient(135deg, #3d8bff, #1a72ff 55%, #0b4fd6); color: #fff; text-align: center; }
+.closing .tile { display: grid; place-items: center; width: clamp(96px, 11vw, 132px); aspect-ratio: 1; border-radius: 23%; background: #fff; box-shadow: 0 30px 50px -16px rgba(3, 20, 70, .45); }
+.closing .tile svg { width: 58%; height: 58%; fill: var(--blue); }
+.closing .wm { margin-top: 30px; font-size: clamp(56px, 7vw, 88px); color: #fff; }
+.closing p { margin: 16px 0 0; font-size: clamp(18px, 2vw, 24px); }
+.closing small { margin-top: 22px; font: 600 14px/1 var(--ui); letter-spacing: .04em; opacity: .8; }
+@media (max-width: 500px) { .gradbar span:last-child { display: none; } }
+@media (max-width: 600px) { .card { border-radius: 20px; } }
+
+/* totl on chassis: light boards hold his graphics and brand components */
+.board{background:#f4f5f8;color:#10162b;font:400 18px/1.55 var(--ui);-webkit-font-smoothing:antialiased;padding:clamp(16px,4.5vw,64px);margin-top:40px}
+.board.flush{padding:0}
+#top .board h3{color:inherit}
+#top .h1{color:var(--ink)}
+.closing{font-family:var(--ui);-webkit-font-smoothing:antialiased}
+.board > * + *{margin-top:40px}
+.board > .pan + .legend{margin-top:32px}
+.media{margin-top:40px}
+.cpts{list-style:none;margin:40px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:0 29px}
+.cpts li{flex:1 1 240px;border-top:1px solid #3a3832;padding:14px 0 20px;display:flex;flex-direction:column;gap:6px}
+.cpts b{font-weight:400;font-size:19px;line-height:1.3;letter-spacing:-.01em;color:#eeede9}
+.cpts span{font-size:17px;line-height:1.35;color:#8f8c84}
+.cpts b.n{font-size:clamp(40px,4.6vw,64px);line-height:1;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.board + .cpts{margin-top:40px}
+.cfacts{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 28px;font-size:17px;line-height:1.35;color:#d4d2cc}
+.cfacts li{display:flex;align-items:center;gap:8px}
+.cfacts svg{width:16px;height:16px;fill:none;stroke:#8f8c84;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(28px,3vw,40px)}
+.cta a{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border:1px solid #d4d2cc;color:#eeede9;font-size:17px;letter-spacing:-.01em;text-decoration:none;transition:background .2s,color .2s}
+.cta a:hover{background:#eeede9;color:#1a1917}
+@media (max-width:760px){.board .pan{margin-left:-16px;margin-right:-16px}}
+</style>
+<style>.card-static{cursor:default}.card-static:hover .card-title{text-decoration:none!important}.card-static:hover .card-img{transform:none!important;filter:none!important}</style>
+<script data-goatcounter="https://arportfolio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="mark" viewBox="171 38 16 16"><path d="M172.554,52.269v-2.515c.952,0,2.166-.75,3.419-2.111,1.087-1.181,1.807-2.395,1.814-2.407.033-.056.84-1.423,2.099-2.8,1.843-2.015,3.706-3.036,5.537-3.036v2.515c-.952,0-2.166.75-3.419,2.111-1.087,1.181-1.807,2.395-1.814,2.407-.033.056-.84,1.423-2.099,2.8-1.843,2.015-3.706,3.036-5.537,3.036Z"/><circle cx="174.852" cy="41.698" r="2.298"/><circle cx="183.125" cy="49.97" r="2.298"/></symbol>
+  <linearGradient id="ai-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset=".55" stop-color="#1a72ff"/><stop offset="1" stop-color="#0b4fd6"/></linearGradient>
+  <linearGradient id="ai-sheen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <symbol id="app-icon" viewBox="16 16 96 96"><rect x="16" y="16" width="96" height="96" rx="22" fill="url(#ai-bg)"/><rect x="16" y="16" width="96" height="96" rx="22" fill="url(#ai-sheen)"/><rect x="16.5" y="16.5" width="95" height="95" rx="21.5" fill="none" stroke="#fff" stroke-opacity=".22"/><g fill="#fff" transform="translate(64 64) scale(3.62) translate(-179 -46)"><path d="M172.554,52.269v-2.515c.952,0,2.166-.75,3.419-2.111,1.087-1.181,1.807-2.395,1.814-2.407.033-.056.84-1.423,2.099-2.8,1.843-2.015,3.706-3.036,5.537-3.036v2.515c-.952,0-2.166.75-3.419,2.111-1.087,1.181-1.807,2.395-1.814,2.407-.033.056-.84,1.423-2.099,2.8-1.843,2.015-3.706,3.036-5.537,3.036Z"/><circle cx="174.852" cy="41.698" r="2.298"/><circle cx="183.125" cy="49.97" r="2.298"/></g></symbol>
+</defs></svg>
+<div id="top" style="background: #1a1917; color: #d4d2cc; font-family: &#x27;Geist&#x27;, &#x27;Helvetica Neue&#x27;, Helvetica, sans-serif; font-weight: 400; font-feature-settings: 'tnum' 1; min-height: 100vh">
+
+<header class="chtop">
+<div class="chtop-in">
+<a class="name" href="./">Austin Remer</a>
+<span class="role">Designer, Orlando FL</span>
+<nav aria-label="Main"><a href="./#work">Work</a><a href="./#archive">Archive</a><a href="./#about">About</a><a href="./#contact">Contact</a></nav>
+</div>
+</header>
+
+<main>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(48px, 5vw, 80px) clamp(20px, 5vw, 72px) clamp(48px, 5vw, 72px); box-sizing: border-box">
+<a href="./" class="ul-link" style="display: inline-block; color: #8f8c84; font-size: 17px; letter-spacing: -0.01em; padding: 11px 0">← All work</a>
+<h1 style="margin: clamp(32px, 4vw, 56px) 0 0; max-width: 1200px; font-size: clamp(46px, 7vw, 108px); font-weight: 400; line-height: 0.93; letter-spacing: -0.055em">Totl</h1>
+<p style="margin: clamp(28px, 3vw, 40px) 0 0; max-width: 980px; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -0.03em; color: #8f8c84">A browser extension that adds sales tax to prices while you shop.</p>
+<div class="cta"><a href="https://chromewebstore.google.com/detail/lonnbkfenoileoiekmaagjcpihijelbd" target="_blank" rel="noopener">Add to Chrome ↗</a><a href="https://addons.mozilla.org/firefox/addon/totl/" target="_blank" rel="noopener">Add to Firefox ↗</a></div>
+<dl style="margin: clamp(48px, 5vw, 72px) 0 0; display: flex; flex-wrap: wrap; gap: 0 29px; border-top: 1px solid #d4d2cc">
+<div style="flex: 1 1 170px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">Brand</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Mark, app icon, color and type</dd></div>
+<div style="flex: 1 1 170px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">User experience</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">Flows from install to the price with tax</dd></div>
+<div style="flex: 1 1 170px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">Interface</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">26 popup screens in light and dark</dd></div>
+<div style="flex: 1 1 170px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">Extension</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">The price line on store pages, on Chrome and Firefox</dd></div>
+<div style="flex: 1 1 170px; padding-top: 14px; display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 15px; color: #8f8c84">Year</dt><dd style="margin: 0; font-size: 17px; line-height: 1.35">2026</dd></div>
+</dl>
+</section>
+
+<section aria-label="Totl on a store page" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px); box-sizing: border-box">
+<div class="board flush" style="margin-top: 0">
+<div class="stage hero" role="img" aria-label="Know the real price before checkout. A store page in a browser with the Totl popup open, showing $200.34 with tax under a $189.00 price.">
+    <div class="in">
+      <div class="rings"><i style="width:640px;height:640px"></i><i style="width:960px;height:960px"></i><i style="width:1280px;height:1280px"></i><i style="width:1600px;height:1600px"></i></div>
+      <h1 class="h1"><span>Know the real price</span><span>before checkout</span></h1>
+      <span class="sphere sp1"></span><span class="sphere sp3"></span>
+
+      <div class="win">
+        <div class="tabs"><span class="dots"><i></i><i></i><i></i></span><span class="tab"><span class="fav">T</span>Alpine Down Jacket</span></div>
+        <div class="bar">
+          <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6"/></svg>
+          <div class="addr"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>trailhead.store/alpine-down-jacket</div>
+          <svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>
+          <span class="ext"><svg viewBox="171 38 16 16"><path d="M172.554,52.269v-2.515c.952,0,2.166-.75,3.419-2.111,1.087-1.181,1.807-2.395,1.814-2.407.033-.056.84-1.423,2.099-2.8,1.843-2.015,3.706-3.036,5.537-3.036v2.515c-.952,0-2.166.75-3.419,2.111-1.087,1.181-1.807,2.395-1.814,2.407-.033.056-.84,1.423-2.099,2.8-1.843,2.015-3.706,3.036-5.537,3.036Z"/><circle cx="174.852" cy="41.698" r="2.298"/><circle cx="183.125" cy="49.97" r="2.298"/></svg></span>
+          <span class="avatar"></span>
+        </div>
+        <div class="shop">
+          <div class="nav"><b>Trailhead</b><span>Men · Women · Gear</span></div>
+          <div class="pd"><img src="assets/4caa809ab664ae8f59acccd5e5f317e8.webp" alt=""></div>
+          <div class="pi">
+            <div class="k">Outerwear</div>
+            <h3>Alpine Down Jacket</h3>
+            <div class="pr">$189.00</div>
+            <span class="wt"><b>$200.34</b> w/tax</span>
+            <div class="sz"><i>S</i><i class="on">M</i><i>L</i><i>XL</i></div>
+            <div class="add">Add to cart</div>
+          </div>
+        </div>
+        <div class="pop"><img src="assets/974d2319cbd6376e8522eae462461257.webp" alt=""></div>
+      </div>
+
+      <span class="sphere sp2"></span>
+    </div>
+  </div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; gap: 32px 29px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="flex: 1 1 280px; margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">Project overview</h2>
+<div style="flex: 3 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px; max-width: 860px">
+<p style="margin: 0; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -0.03em">Enter a delivery ZIP once, and every price on a store page gets a second line with what you’ll actually pay.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.4; letter-spacing: -0.01em; color: #b3b0a8">Tax rates ship inside the extension, so there’s no server lookup. Built for Chrome and Firefox.</p>
+</div>
+</div>
+</section>
+
+<section aria-label="All 26 popup screens" style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div class="media">
+<div class="stage collage" role="img" aria-label="All 26 popup screens: ZIP entry, tax area picker, settings, bug reports and feature ideas.">
+    <div class="in">
+      <div class="col" style="left:-180px;top:-150px"><img src="assets/97f6e6a0120c8df410637ac002a04f01.webp" width="320" height="391" alt="" loading="lazy"><img src="assets/6f185671f5f0a4170a18d0fbb8629bf4.webp" width="320" height="311" alt="" loading="lazy"><img src="assets/acecfc347906b75d30dc64bb97d8c40d.webp" width="320" height="318" alt="" loading="lazy"><img src="assets/fac8f0093361007cc80671920015dee8.webp" width="320" height="311" alt="" loading="lazy"><img src="assets/c8c1775c4b7c082ebf2b055fd73bf9cf.webp" width="320" height="311" alt="" loading="lazy"><img src="assets/879b06d29ab4b1b1362d1372fad4a6d1.webp" width="320" height="311" alt="" loading="lazy"></div>
+      <div class="col" style="left:170px;top:30px"><img src="assets/37528c779a5eeca7c285efcabcb534ef.webp" width="320" height="361" alt="" loading="lazy"><img src="assets/1bf6a859451f54eca6538c671b4a0910.webp" width="320" height="465" alt="" loading="lazy"><img src="assets/2642a11e7b7e39705c04bd0875c538f7.webp" width="320" height="344" alt="" loading="lazy"><img src="assets/58ebcbcb22fb42bcfa3e2e1f45254f1f.webp" width="320" height="409" alt="" loading="lazy"><img src="assets/2f679f9b9f186358f201bfb1ce75dde1.webp" width="320" height="377" alt="" loading="lazy"></div>
+      <div class="col" style="left:520px;top:-70px"><img src="assets/e33c9b2fb4f2eb2f69e7c6dbea0c2907.webp" width="320" height="311" alt="" loading="lazy"><img src="assets/7b904f54d0a60f55d27ca0ec4b71475a.webp" width="320" height="361" alt="" loading="lazy"><img src="assets/a492788388852611c2ea8a3d946e61e8.webp" width="320" height="322" alt="" loading="lazy"><img src="assets/016b28a1dd73379b1c217bfa9269d9f4.webp" width="320" height="323" alt="" loading="lazy"><img src="assets/2972d22919e30a5b598c91373bb0033d.webp" width="320" height="367" alt="" loading="lazy"><img src="assets/d95499d99498c1095746c7acc1a5a687.webp" width="320" height="356" alt="" loading="lazy"></div>
+      <div class="col" style="left:870px;top:100px"><img src="assets/31c00631ab454865534ce85bdc346906.webp" width="320" height="455" alt="" loading="lazy"><img src="assets/60f0530e8d2c54a6b19c02d7898222f1.webp" width="320" height="454" alt="" loading="lazy"><img src="assets/75735272a35352d73d3ca7ba5804cc23.webp" width="320" height="373" alt="" loading="lazy"><img src="assets/59a91299c3b66dadae4faca70af29707.webp" width="320" height="351" alt="" loading="lazy"></div>
+      <div class="col" style="left:1220px;top:-30px"><img src="assets/7bba1a26c00e5571b9854fdb6a12fa71.webp" width="320" height="311" alt="" loading="lazy"><img src="assets/0f2e7bb35217cf4670787e1818daf0b2.webp" width="320" height="351" alt="" loading="lazy"><img src="assets/c46eb7e29347539e3f4e3d3e3839ca97.webp" width="320" height="442" alt="" loading="lazy"><img src="assets/9f4e79ad17fa21b891c070a9c844256c.webp" width="320" height="365" alt="" loading="lazy"><img src="assets/66b06dc0dbe5c936df497d5fd1f7e085.webp" width="320" height="302" alt="" loading="lazy"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section aria-label="Totl video" style="max-width: 1200px; margin: 0 auto; padding: clamp(20px, 2.4vw, 32px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div class="media">
+<div class="film">
+    <video id="vid" muted loop playsinline preload="auto" poster="assets/f3718e2f921ed447d3eb067e041cf02b.jpg" aria-label="Totl shows the price with sales tax under a store's price.">
+      <source src="assets/96b6e21e8c2089aacb9c99438f194c45.webm" type="video/webm">
+      <source src="assets/327ae2865a2457b69c92b119d4d39146.mp4" type="video/mp4">
+    </video>
+    <button class="ctl" id="toggle" type="button" aria-pressed="false" aria-label="Pause">
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+  </div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">The price you see isn’t the price you pay</h2>
+<span style="font-size: 17px; line-height: 1.35; color: #8f8c84; max-width: 620px">Most U.S. stores show prices before sales tax. The total only appears at checkout, surprising shoppers with a higher price.</span>
+</div>
+<div class="board">
+<img class="cut" style="max-width:792px" src="assets/e0b79b1ea652a6dc0998deee23b87b64.webp" width="1585" height="1055" alt="A $189.00 jacket on a product page next to a checkout receipt that adds $11.34 sales tax for a $200.34 total." loading="lazy">
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">User flow</h2>
+</div>
+<div class="board">
+<div class="pan"><img class="cut" style="max-width:1438px" src="assets/59e23eff65c5f7a351723a9a64eb11c8.webp" width="2400" height="965" alt="Flow chart from install to seeing the price with tax, with each decision." loading="lazy"></div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">UI flow</h2>
+</div>
+<div class="board">
+<div class="pan"><img class="cut" style="max-width:1470px" src="assets/782a25c9e4eb12cc8afc27d1796c6209.webp" width="2400" height="1272" alt="The popup screens a shopper taps through, from the store page to the price with tax." loading="lazy"></div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">Light mode</h2>
+</div>
+<div class="board">
+<div class="shots stag">
+      <figure><img class="pp" src="assets/7bba1a26c00e5571b9854fdb6a12fa71.webp" alt="Popup with ZIP 43215 resolved to an 8% rate" loading="lazy"><figcaption class="cap">ZIP resolved</figcaption></figure>
+      <figure><img class="pp" src="assets/37528c779a5eeca7c285efcabcb534ef.webp" alt="ZIP 98001 with Auburn picked and an exact 10.4% rate" loading="lazy"><figcaption class="cap">Tax area picked</figcaption></figure>
+      <figure><img class="pp" src="assets/31c00631ab454865534ce85bdc346906.webp" alt="Settings" loading="lazy"><figcaption class="cap">Settings</figcaption></figure>
+      <figure><img class="pp" src="assets/1bf6a859451f54eca6538c671b4a0910.webp" alt="Report a bug form" loading="lazy"><figcaption class="cap">Report a bug</figcaption></figure>
+    </div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">Dark mode</h2>
+</div>
+<div class="board">
+<div class="shots stag dk">
+      <figure><img class="pp" src="assets/1c8284aebef907130a2c57c0b6132076.webp" alt="Popup with ZIP 43215 resolved to an 8% rate, dark" loading="lazy"><figcaption class="cap">ZIP resolved</figcaption></figure>
+      <figure><img class="pp" src="assets/8c5a80c960c0a71237354bec3bd795c5.webp" alt="ZIP 98001 with Auburn picked and an exact 10.4% rate, dark" loading="lazy"><figcaption class="cap">Tax area picked</figcaption></figure>
+      <figure><img class="pp" src="assets/5f3f38cf337b94f5d5b16ee938be51a1.webp" alt="Settings, dark" loading="lazy"><figcaption class="cap">Settings</figcaption></figure>
+      <figure><img class="pp" src="assets/68ea1249448c12f6ff9c07651ac51120.webp" alt="Report a bug form, dark" loading="lazy"><figcaption class="cap">Report a bug</figcaption></figure>
+    </div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">Interface colors</h2>
+</div>
+<div class="board">
+<div class="roles">
+      <div class="card rolecard">
+        <h3>Light</h3>
+        <div class="rrow"><i style="--c:#F2F2F5"></i><div><b>Page</b><span>Popup ground</span></div><code>#F2F2F5</code></div>
+        <div class="rrow"><i style="--c:#FFFFFF"></i><div><b>Card</b><span>Groups</span></div><code>#FFFFFF</code></div>
+        <div class="rrow"><i style="--c:#F2F2F5"></i><div><b>Field</b><span>Inputs, menus, buttons</span></div><code>#F2F2F5</code></div>
+        <div class="rrow"><i style="--c:#10162B"></i><div><b>Text</b><span>Labels, values</span></div><code>#10162B</code></div>
+        <div class="rrow"><i style="--c:#7A8296"></i><div><b>Secondary</b><span>Help, notes</span></div><code>#7A8296</code></div>
+        <div class="rrow"><i style="--c:#10162B"></i><div><b>Primary button</b><span>Send report</span></div><code>#10162B</code></div>
+        <div class="rrow"><i style="--c:#1A72FF"></i><div><b>Brand blue</b><span>Mark, rate, switches, focus</span></div><code>#1A72FF</code></div>
+      </div>
+      <div class="card rolecard dk">
+        <h3>Dark</h3>
+        <div class="rrow"><i style="--c:#10162B"></i><div><b>Page</b><span>Popup ground</span></div><code>#10162B</code></div>
+        <div class="rrow"><i style="--c:#1D2539"></i><div><b>Card</b><span>Groups</span></div><code>#1D2539</code></div>
+        <div class="rrow"><i style="--c:#10162B"></i><div><b>Field</b><span>Inputs, menus, buttons</span></div><code>#10162B</code></div>
+        <div class="rrow"><i style="--c:#FFFFFF"></i><div><b>Text</b><span>Labels, values</span></div><code>#FFFFFF</code></div>
+        <div class="rrow"><i style="--c:#B7BCC8"></i><div><b>Secondary</b><span>Help, notes</span></div><code>#B7BCC8</code></div>
+        <div class="rrow"><i style="--c:#FFFFFF"></i><div><b>Primary button</b><span>Send report</span></div><code>#FFFFFF</code></div>
+        <div class="rrow"><i style="--c:#1A72FF"></i><div><b>Brand blue</b><span>Mark, rate, switches, focus</span></div><code>#1A72FF</code></div>
+      </div>
+    </div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">Micro-interactions</h2>
+</div>
+<div class="board">
+<div class="shots lab">
+      <figure><img class="pp" src="assets/6f185671f5f0a4170a18d0fbb8629bf4.webp" alt="Popup looking up a ZIP" loading="lazy"><figcaption class="cap">ZIP check</figcaption></figure>
+      <figure><img class="pp" src="assets/c46eb7e29347539e3f4e3d3e3839ca97.webp" alt="Tax area picker open" loading="lazy"><figcaption class="cap">Tax area picker</figcaption></figure>
+      <figure><div class="pcard"><div class="pshop">Trailhead Outfitters</div><div class="ph"><img src="assets/4caa809ab664ae8f59acccd5e5f317e8.webp" alt=""></div><div class="nm">Alpine Down Jacket</div><div class="pr">$189.00</div><span class="wt"><b>$200.34</b> w/tax</span><div class="cart">Add to cart</div></div><figcaption class="cap">Price line</figcaption></figure>
+      <figure><img class="pp" src="assets/5f3f38cf337b94f5d5b16ee938be51a1.webp" alt="Settings in dark mode" loading="lazy"><figcaption class="cap">Dark mode</figcaption></figure>
+    </div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">Merchant learning</h2>
+<span style="font-size: 17px; line-height: 1.35; color: #8f8c84; max-width: 620px">Totl reads the tax a store charges at checkout and reuses it on the next visit.</span>
+</div>
+<div class="board">
+<div class="pan"><img class="cut" style="max-width:1480px" src="assets/75ebeeea5ff8a9ec50a4c0fe46560f13.webp" width="2400" height="782" alt="A store order summary with its tax line read by Totl, the saved matches, and the cart showing the price with tax." loading="lazy"></div>
+</div>
+<ul class="cpts"><li><b>Reads the store’s tax</b><span>At checkout, Totl reads the tax the store charged.</span></li><li><b>Checks it</b><span>Two matching carts make it trusted. A mismatch starts over.</span></li><li><b>Uses it next time</b><span>The cart shows the store’s tax before the store does.</span></li></ul>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">Coverage</h2>
+</div>
+<ul class="cpts"><li><b class="n">40,282</b><span>ZIP codes, bundled offline</span></li><li><b class="n">50 + DC</b><span>States covered</span></li><li><b class="n">0–12.6%</b><span>Combined rates</span></li></ul>
+<div class="board">
+<img class="cut" style="max-width:829px" src="assets/f48a586985bd10e6f18aa5db123a9abc.webp" width="1658" height="1188" alt="Tile map of the average sales tax rate in every state." loading="lazy">
+    <div class="legend"><span class="cap">Average rate by state</span><div class="lsw"><span><i style="--c:#fff" class="none"></i>0%</span><span><i style="--c:#c9dcff"></i>&lt;5</span><span><i style="--c:#9fc1ff"></i>5–6</span><span><i style="--c:#6fa2ff"></i>6–7</span><span><i style="--c:#3d82fb"></i>7–8</span><span><i style="--c:#1a63e6"></i>8–9</span><span><i style="--c:#0b45b8"></i>9+</span></div></div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">The mark</h2>
+<span style="font-size: 17px; line-height: 1.35; color: #8f8c84; max-width: 620px">A percent sign drawn as a wave between two dots. It reads as % for sales tax and as ≈ for “about”.</span>
+</div>
+<div class="board">
+<div class="duo">
+      <div class="card"><div class="lock"><svg width="84" height="84" aria-hidden="true"><use href="#app-icon"/></svg><span class="wm">Totl</span></div></div>
+      <div class="card"><svg class="bigmark" viewBox="171 38 16 16" role="img" aria-label="The Totl mark"><path d="M172.554,52.269v-2.515c.952,0,2.166-.75,3.419-2.111,1.087-1.181,1.807-2.395,1.814-2.407.033-.056.84-1.423,2.099-2.8,1.843-2.015,3.706-3.036,5.537-3.036v2.515c-.952,0-2.166.75-3.419,2.111-1.087,1.181-1.807,2.395-1.814,2.407-.033.056-.84,1.423-2.099,2.8-1.843,2.015-3.706,3.036-5.537,3.036Z"/><circle cx="174.852" cy="41.698" r="2.298"/><circle cx="183.125" cy="49.97" r="2.298"/></svg></div>
+    </div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">The icon</h2>
+</div>
+<div class="board">
+<div class="iconrow">
+      <div class="card">
+        <img class="cut" style="max-width:383px" src="assets/0fb4244a291c90ea063796b77673350c.webp" width="766" height="792" alt="The app icon on its 128 px canvas with 16 px padding." loading="lazy">
+      </div>
+      <div class="sizes">
+        <div class="card"><div class="well"><svg width="16" height="16" aria-hidden="true"><use href="#app-icon"/></svg></div><div><b>16 px</b><span>Browser toolbar</span></div></div>
+        <div class="card"><div class="well"><svg width="48" height="48" aria-hidden="true"><use href="#app-icon"/></svg></div><div><b>48 px</b><span>Extensions page</span></div></div>
+        <div class="card"><div class="well"><svg width="128" height="128" aria-hidden="true" class="x128"><use href="#app-icon"/></svg></div><div><b>128 px</b><span>Chrome Web Store</span></div></div>
+      </div>
+    </div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">Lockups</h2>
+<span style="font-size: 17px; line-height: 1.35; color: #8f8c84; max-width: 620px">Icon and wordmark lead on marketing. In the product, the bare blue mark sits beside the wordmark.</span>
+</div>
+<div class="board">
+<div class="lockups">
+      <div class="card lu"><div class="clearbox"><em>½ x</em><div class="lk"><svg width="60" height="60" aria-hidden="true"><use href="#app-icon"/></svg><span class="wm">Totl</span></div></div><span class="cap">Primary lockup · clear space</span></div>
+      <div class="card lu blue"><div class="lk"><svg width="60" height="60" aria-hidden="true" style="filter:drop-shadow(0 6px 14px rgba(3,20,70,.3))"><use href="#app-icon"/></svg><span class="wm">Totl</span></div><span class="cap">On brand blue</span></div>
+      <div class="card lu ink"><div class="lk"><svg width="60" height="60" aria-hidden="true"><use href="#app-icon"/></svg><span class="wm">Totl</span></div><span class="cap">On ink</span></div>
+      <div class="card lu"><div class="lk sm"><svg width="34" height="34" aria-hidden="true" style="fill:var(--blue)"><use href="#mark"/></svg><span class="wm">Totl</span></div><span class="cap">Product lockup · popup header</span></div>
+      <div class="card lu"><div class="stack"><svg width="84" height="84" aria-hidden="true"><use href="#app-icon"/></svg><span class="wm">Totl</span></div><span class="cap">Stacked</span></div>
+      <div class="card lu"><svg width="96" height="96" aria-hidden="true" style="fill:var(--blue)"><use href="#mark"/></svg><span class="cap">Mark alone · min 16 px</span></div>
+    </div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">Colors</h2>
+</div>
+<div class="board">
+<div class="swatches">
+      <div class="card swatch"><i style="--c:#3D8BFF"></i><b>Sky</b><code>#3D8BFF</code><span>Gradient start</span></div>
+      <div class="card swatch"><i style="--c:#1A72FF"></i><b>Totl Blue</b><code>#1A72FF</code><span>Price with tax, mark, switches</span></div>
+      <div class="card swatch"><i style="--c:#0B4FD6"></i><b>Deep</b><code>#0B4FD6</code><span>Small blue text, gradient end</span></div>
+      <div class="card swatch"><i style="--c:#10162B"></i><b>Ink</b><code>#10162B</code><span>Text, primary buttons</span></div>
+      <div class="card swatch"><i style="--c:#F3F3F6" class="edge"></i><b>Panel</b><code>#F3F3F6</code><span>Popup panels, fields, buttons</span></div>
+      <div class="card swatch"><i style="--c:#FFFFFF" class="edge"></i><b>White</b><code>#FFFFFF</code><span>Popup and page ground</span></div>
+    </div>
+    <div class="gradbar"><span>Icon gradient</span><span>Top left to bottom right</span></div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(96px, 10vw, 144px) clamp(20px, 5vw, 72px) 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #d4d2cc; padding-top: 16px">
+<h2 style="margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; letter-spacing: -0.015em">Typefaces</h2>
+</div>
+<div class="board">
+<div class="faces">
+      <div class="card face"><span class="cap">Product</span><h3>Source Sans 3</h3><div class="spec1">$200.34 <small>w/tax</small></div><div class="ft"><span>Regular<i>400</i></span><span style="font-weight:600">Semibold<i>600</i></span><span style="font-weight:700">Bold<i>700</i></span></div></div>
+      <div class="card face d"><span class="cap">Display</span><h3>Onest</h3><div class="spec2">Know the real price.</div><div class="num">0 1 2 3 4 5 6 7 8 9 % ≈ $</div></div>
+    </div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(120px, 12vw, 176px) clamp(20px, 5vw, 72px) 40px; box-sizing: border-box">
+<a href="armada-hq.html" class="next" style="display: flex; flex-direction: column; gap: 14px; border-top: 1px solid #d4d2cc; padding-top: 16px; color: #d4d2cc; text-decoration: none">
+<span style="font-size: 17px; color: #8f8c84">Next case study</span>
+<span class="next-title" style="font-size: clamp(46px, 7vw, 108px); line-height: 0.93; letter-spacing: -0.055em">Armada HQ</span>
+</a>
+<footer style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0 32px; margin-top: clamp(80px, 9vw, 128px); border-top: 1px solid #d4d2cc; padding-top: 6px; font-size: 15px">
+<span style="padding: 13px 0">© 2026 Austin Remer</span>
+<a href="mailto:austin.remer@gmail.com" class="ul-link" style="color: #d4d2cc; padding: 13px 0">austin.remer@gmail.com</a>
+<a href="#top" class="ul-link" style="color: #d4d2cc; padding: 13px 0">Back to top ↑</a>
+</footer>
+</section>
+
+</main>
+</div>
+
+<script>
+(function () {
+  var stages = document.querySelectorAll('.stage');
+  var W = { hero: 1360, collage: 1360 };
+  function fit() { stages.forEach(function (s) { var w = s.classList.contains('hero') ? W.hero : W.collage; s.firstElementChild.style.setProperty('--s', s.clientWidth / w); }); }
+  fit();
+  if (window.ResizeObserver) { var ro = new ResizeObserver(fit); stages.forEach(function (s) { ro.observe(s); }); }
+  else window.addEventListener('resize', fit);
+
+  var v = document.getElementById('vid'), btn = document.getElementById('toggle');
+  function show(paused) { btn.setAttribute('aria-pressed', paused ? 'true' : 'false'); btn.setAttribute('aria-label', paused ? 'Play' : 'Pause'); }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) show(true);
+  else { var p = v.play(); if (p && p.catch) p.catch(function () { show(true); }); }
+  v.addEventListener('play', function () { show(false); });
+  v.addEventListener('pause', function () { show(true); });
+  btn.addEventListener('click', function () { if (v.paused) v.play(); else v.pause(); });
+})();
+</script>
+</body>
+</html>
